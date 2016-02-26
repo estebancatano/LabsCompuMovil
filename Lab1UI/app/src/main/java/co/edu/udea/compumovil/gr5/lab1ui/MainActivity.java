@@ -1,5 +1,7 @@
 package co.edu.udea.compumovil.gr5.lab1ui;
 
+import android.app.DatePickerDialog;
+import android.app.DialogFragment;
 import android.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -10,20 +12,44 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
-public class MainActivity extends ActionBarActivity {
+import java.util.Calendar;
+
+public class MainActivity extends ActionBarActivity implements DatePickerDialog.OnDateSetListener{
 
     StringBuilder informacionContacto;
+
+    private TextView mDateDisplay;
+    private int mYear;
+    private int mMonth;
+    private int mDay;
+    private int mHour;
+    private int mMinute;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Capture our View elements
+        mDateDisplay = (TextView) findViewById(R.id.txt_nacimiento);
+
+        // Use the current time as the default values for the picker
+        final Calendar c = Calendar.getInstance();
+        mYear = c.get(Calendar.YEAR);
+        mMonth = c.get(Calendar.MONTH);
+        mDay = c.get(Calendar.DAY_OF_MONTH);
+        mHour = c.get(Calendar.HOUR_OF_DAY);
+        mMinute = c.get(Calendar.MINUTE);
+
+        updateDisplay();
 
         // Obtiene la referencia de los widgets
         final EditText txtNombres = (EditText) findViewById(R.id.txt_nombres);
@@ -57,9 +83,8 @@ public class MainActivity extends ActionBarActivity {
         txtNacimiento.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DateDialog dialog = new DateDialog(v);
-                FragmentTransaction ft = getFragmentManager().beginTransaction();
-                dialog.show(ft, String.valueOf(R.string.seleccion_fecha));
+                DialogFragment datePickerFragment = new DateDialog();
+                datePickerFragment.show(getFragmentManager(), "Fecha de nacimiento");
 
             }
         });
@@ -160,6 +185,23 @@ public class MainActivity extends ActionBarActivity {
             retorno = false;
         }
          return retorno;
+    }
+
+
+    @Override
+    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+        mYear = year;
+        mMonth = monthOfYear;
+        mDay = dayOfMonth;
+        updateDisplay();
+    }
+
+    // Update the date in the TextView
+    private void updateDisplay() {
+        mDateDisplay.setText(new StringBuilder()
+                // Month is 0 based so add 1
+                .append(mDay).append("-").append(mMonth + 1).append("-")
+                .append(mYear).append(" "));
     }
 
 }
