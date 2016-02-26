@@ -198,10 +198,21 @@ public class MainActivity extends ActionBarActivity implements DatePickerDialog.
 
     // Update the date in the TextView
     private void updateDisplay() {
-        mDateDisplay.setText(new StringBuilder()
-                // Month is 0 based so add 1
-                .append(mDay).append("-").append(mMonth + 1).append("-")
-                .append(mYear).append(" "));
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(mYear);
+        if (mMonth < 9){
+            stringBuilder.append("-0");
+        }else {
+            stringBuilder.append("-");
+        }
+        stringBuilder.append(mMonth+1);
+        if (mDay < 10){
+            stringBuilder.append("-0");
+        }else {
+            stringBuilder.append("-");
+        }
+        stringBuilder.append(mDay);
+        mDateDisplay.setText(stringBuilder);
     }
 
 }
