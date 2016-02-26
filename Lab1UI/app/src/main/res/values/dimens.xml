@@ -1,0 +1,12 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="margin">16dp</dimen>
+    <dimen name="width_sv">280dp</dimen>
+    <dimen name="size_button">80dp</dimen>
+    <dimen name="size_button_landscape">50dp</dimen>
+    <dimen name="none">0dp</dimen>
+    <dimen name="text_size">25sp</dimen>
+    <dimen name="text_size_landscape">10sp</dimen>
+    <dimen name="height_sv_landscape">230dp</dimen>
+</resources>
+
