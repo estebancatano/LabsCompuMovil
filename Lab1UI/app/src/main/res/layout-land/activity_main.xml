@@ -1,184 +1,221 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="co.edu.udea.compumovil.gr5.lab1ui.MainActivity">
 
-    <ScrollView
-        android:layout_width="@dimen/none"
-        android:layout_height="match_parent"
-        android:layout_weight="3"
-        android:padding="@dimen/margin"
+    <android.support.v7.widget.Toolbar
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/appbar"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:minHeight="?attr/actionBarSize"
+        android:background="@color/primary"
+        android:titleTextAppearance="@style/ToolbarTitle"
+        android:elevation="4dp"/>
 
-        android:id="@+id/scrollView"
-        android:layout_gravity="right">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <ScrollView
+            android:layout_width="@dimen/none"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:padding="@dimen/margin"
+            android:id="@+id/scrollView"
+            android:layout_gravity="start">
+
+            <RelativeLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal">
+
+                <EditText
+                    android:id="@+id/txt_nombres"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size"
+                    android:gravity="center"
+                    android:inputType="textCapSentences|textCapWords|textNoSuggestions"
+                    android:hint="@string/nombres"
+                    android:singleLine="true"
+                    android:imeOptions="actionNext"/>
+
+                <EditText
+                    android:id="@+id/txt_apellidos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size"
+                    android:gravity="center"
+                    android:inputType="textCapSentences|textCapWords|textNoSuggestions"
+                    android:hint="@string/apellidos"
+                    android:layout_below="@id/txt_nombres"
+                    android:singleLine="true"
+                    android:imeOptions="actionNext"/>
+
+                <AutoCompleteTextView
+                    android:id="@+id/txt_pais"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size"
+                    android:gravity="center"
+                    android:inputType="textAutoComplete"
+                    android:hint="@string/pais"
+                    android:layout_below="@id/txt_apellidos"
+                    android:singleLine="true"
+                    android:imeOptions="actionNext"/>
+
+                <EditText
+                    android:id="@+id/txt_telefono"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size"
+                    android:gravity="center"
+                    android:inputType="phone"
+                    android:hint="@string/telefono"
+                    android:layout_below="@id/txt_pais"
+                    android:singleLine="true"
+                    android:imeOptions="actionNext"/>
+
+                <EditText
+                    android:id="@+id/txt_direccion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size"
+                    android:gravity="center"
+                    android:inputType="textNoSuggestions"
+                    android:hint="@string/direccion"
+                    android:layout_below="@id/txt_telefono"
+                    android:singleLine="true"
+                    android:imeOptions="actionNext"/>
+
+                <EditText
+                    android:id="@+id/txt_correo_electronico"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size"
+                    android:gravity="center"
+                    android:inputType="textEmailAddress"
+                    android:hint="@string/correo_electronico"
+                    android:layout_below="@id/txt_direccion"
+                    android:singleLine="true"
+                    android:imeOptions="actionNext"/>
+
+                <EditText
+                    android:id="@+id/txt_nacimiento"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/nacimiento"
+                    android:textSize="@dimen/text_size"
+                    android:textColor="@color/primary_text"
+                    android:gravity="center"
+                    android:editable="false"
+                    android:layout_below="@+id/txt_correo_electronico" />
+
+                <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/rg_sexo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin"
+                    android:layout_below="@id/txt_nacimiento"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/masculino"
+                        android:textSize="@dimen/text_size"
+                        android:id="@+id/rb_masculino"/>
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/femenino"
+                        android:textSize="@dimen/text_size"
+                        android:id="@+id/rb_femenino"/>
+                </RadioGroup>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/pasatiempo"
+                    android:textSize="@dimen/text_size"
+                    android:textColor="@color/primary_text"
+                    android:layout_marginTop="@dimen/margin"
+                    android:id="@+id/lbl_pasatiempo"
+                    android:layout_below="@+id/rg_sexo"/>
+
+                <Spinner
+                    android:id="@+id/spin_pasatiempos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin"
+                    android:layout_below="@id/rg_sexo"
+                    android:layout_toRightOf="@id/lbl_pasatiempo"
+                    android:backgroundTint="@android:color/holo_blue_light"
+                    android:layout_centerInParent="true" />
+
+                <CheckBox
+                    android:id="@+id/cb_favorito"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/favorito"
+                    android:textSize="@dimen/text_size"
+                    android:layout_centerInParent="true"
+                    android:layout_below="@id/spin_pasatiempos"
+                    android:checked="false" />
+
+            </RelativeLayout>
+        </ScrollView>
+
 
         <RelativeLayout
             android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal">
+            android:layout_width="@dimen/none"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="@dimen/margin"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/primary_light"
+            android:elevation="4dp">
 
-            <EditText
-                android:id="@+id/txt_nombres"
+            <ScrollView
+                android:id="@+id/sv_down"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/text_size"
-                android:gravity="center"
-                android:inputType="textCapSentences|textCapWords|textNoSuggestions"
-                android:hint="@string/nombres"/>
+                android:layout_height="@dimen/height_sv_landscape">
 
-            <EditText
-                android:id="@+id/txt_apellidos"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/text_size"
-                android:gravity="center"
-                android:inputType="textCapSentences|textCapWords|textNoSuggestions"
-                android:hint="@string/apellidos"
-                android:layout_below="@id/txt_nombres"/>
+                <TextView
+                    android:id="@+id/lbl_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
-            <AutoCompleteTextView
-                android:id="@+id/txt_pais"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/text_size"
-                android:gravity="center"
-                android:inputType="textAutoComplete"
-                android:hint="@string/pais"
-                android:layout_below="@id/txt_apellidos" />
+            </ScrollView>
 
-            <EditText
-                android:id="@+id/txt_telefono"
+            <Button
+                android:id="@+id/btn_mostrar"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/text_size"
-                android:gravity="center"
-                android:inputType="phone"
-                android:hint="@string/telefono"
-                android:layout_below="@id/txt_pais"/>
-
-            <EditText
-                android:id="@+id/txt_direccion"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/text_size"
-                android:gravity="center"
-                android:inputType="textNoSuggestions"
-                android:hint="@string/direccion"
-                android:layout_below="@id/txt_telefono"/>
-
-            <EditText
-                android:id="@+id/txt_correo_electronico"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/text_size"
-                android:gravity="center"
-                android:inputType="textEmailAddress"
-                android:hint="@string/correo_electronico"
-                android:layout_below="@id/txt_direccion"/>
-
-            <EditText
-                android:id="@+id/txt_nacimiento"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/nacimiento"
-                android:textSize="@dimen/text_size"
-                android:textColor="@color/primary_text"
-                android:gravity="center"
+                android:layout_height="@dimen/size_button_landscape"
+                android:layout_centerVertical="true"
                 android:layout_marginTop="@dimen/margin"
-                android:layout_below="@+id/txt_correo_electronico"/>
-
-            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/rg_sexo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin"
-                android:layout_below="@id/txt_nacimiento"
+                android:drawableLeft="@drawable/abc_ic_search_api_mtrl_alpha"
+                android:text="@string/mostrar"
+                android:background="@color/accent"
+                android:textSize="10sp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
                 android:gravity="center"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/masculino"
-                    android:textSize="@dimen/text_size"
-                    android:id="@+id/rb_masculino"/>
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/femenino"
-                    android:textSize="@dimen/text_size"
-                    android:id="@+id/rb_femenino"/>
-            </RadioGroup>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/pasatiempo"
-                android:textSize="@dimen/text_size"
-                android:textColor="@color/primary_text"
-                android:layout_marginTop="@dimen/margin"
-                android:id="@+id/lbl_pasatiempo"
-                android:layout_below="@+id/rg_sexo"/>
-
-            <Spinner
-                android:id="@+id/spin_pasatiempos"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin"
-                android:layout_below="@id/rg_sexo"
-                android:layout_toRightOf="@id/lbl_pasatiempo"
-                android:backgroundTint="@android:color/holo_blue_light"
-                android:layout_centerInParent="true" />
-
-            <CheckBox
-                android:id="@+id/cb_favorito"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/favorito"
-                android:textSize="@dimen/text_size"
-                android:layout_centerInParent="true"
-                android:layout_below="@id/spin_pasatiempos"
-                android:checked="false" />
+                android:elevation="8dp"
+                android:layout_below="@id/sv_down"/>
 
         </RelativeLayout>
-    </ScrollView>
+    </LinearLayout>
 
 
-    <RelativeLayout
-        android:orientation="vertical"
-        android:layout_width="@dimen/none"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:padding="@dimen/margin"
-        android:layout_gravity="center_horizontal">
-
-        <ScrollView
-            android:id="@+id/sv_down"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/height_sv_landscape">
-
-            <TextView
-                android:id="@+id/lbl_info"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-        </ScrollView>
-
-        <Button
-            android:id="@+id/btn_mostrar"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/size_button_landscape"
-            android:layout_centerVertical="true"
-            android:drawableLeft="@drawable/abc_ic_search_api_mtrl_alpha"
-            android:text="@string/mostrar"
-            android:textSize="@dimen/text_size_landscape"
-            android:layout_below="@id/sv_down"/>
-
-    </RelativeLayout>
 
 </LinearLayout>

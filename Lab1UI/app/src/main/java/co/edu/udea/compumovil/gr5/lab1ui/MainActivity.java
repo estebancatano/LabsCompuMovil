@@ -2,11 +2,9 @@ package co.edu.udea.compumovil.gr5.lab1ui;
 
 import android.app.DatePickerDialog;
 import android.app.DialogFragment;
-import android.app.FragmentTransaction;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Gravity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -17,48 +15,55 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.TimePicker;
 import android.widget.Toast;
 
-import java.util.Calendar;
-
-public class MainActivity extends ActionBarActivity implements DatePickerDialog.OnDateSetListener{
+public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener{
 
     StringBuilder informacionContacto;
 
-    private TextView mDateDisplay;
+    private TextView txtNacimiento;
     private int mYear;
     private int mMonth;
     private int mDay;
-    private int mHour;
-    private int mMinute;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Capture our View elements
-        mDateDisplay = (TextView) findViewById(R.id.txt_nacimiento);
+        /*
+        // Check if we're running on Android 5.0 or higher
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            // Call some material design APIs here
 
-        // Use the current time as the default values for the picker
-        final Calendar c = Calendar.getInstance();
-        mYear = c.get(Calendar.YEAR);
-        mMonth = c.get(Calendar.MONTH);
-        mDay = c.get(Calendar.DAY_OF_MONTH);
-        mHour = c.get(Calendar.HOUR_OF_DAY);
-        mMinute = c.get(Calendar.MINUTE);
+            //Obtener la referencia del widget Toolbar y se maneja como ActionBar
+            Toolbar toolbar = (Toolbar) findViewById(R.id.appbar);
+            if(toolbar != null) {
+                setSupportActionBar(toolbar);
+                getSupportActionBar().setTitle("Lab#1 - User Interface");
+                getSupportActionBar().setIcon(R.mipmap.logo_grupo5);
+            }
+        } else {
+            // Implement this feature without material design
+        }
+        */
 
-        updateDisplay();
+        Toolbar toolbar = (Toolbar) findViewById(R.id.appbar);
+        if(toolbar != null) {
+            setSupportActionBar(toolbar);
+            getSupportActionBar().setTitle("Lab#1 - User Interface");
+            getSupportActionBar().setIcon(R.mipmap.logo_grupo5);
+        }
 
-        // Obtiene la referencia de los widgets
+        // Obtiene la referencia de los elementos de la vista
         final EditText txtNombres = (EditText) findViewById(R.id.txt_nombres);
+        txtNombres.requestFocus();
         final EditText txtApellidos = (EditText) findViewById(R.id.txt_apellidos);
         final AutoCompleteTextView txtPais = (AutoCompleteTextView) findViewById(R.id.txt_pais);
         final EditText txtTelefono = (EditText) findViewById(R.id.txt_telefono);
         final EditText txtDireccion = (EditText) findViewById(R.id.txt_direccion);
         final EditText txtCorreoElectronico = (EditText) findViewById(R.id.txt_correo_electronico);
-        final EditText txtNacimiento = (EditText) findViewById(R.id.txt_nacimiento);
+        txtNacimiento = (TextView) findViewById(R.id.txt_nacimiento);
         final RadioButton rbMasculino = (RadioButton) findViewById(R.id.rb_masculino);
         final RadioButton rbFemenino = (RadioButton) findViewById(R.id.rb_femenino);
         final Spinner spinPasatiempos = (Spinner) findViewById(R.id.spin_pasatiempos);
@@ -66,12 +71,11 @@ public class MainActivity extends ActionBarActivity implements DatePickerDialog.
         final Button btnMostrar = (Button) findViewById(R.id.btn_mostrar);
         final TextView lblInfo = (TextView) findViewById(R.id.lbl_info);
 
-
         // Obtiene el string array
         String[] paises = getResources().getStringArray(R.array.lista_paises);
         String[] pasatiempos = getResources().getStringArray(R.array.lista_pasatiempos);
 
-        // Crea el adaptador y se asigna al AutoCompleteTextView
+        // Crea los adapatadores
         ArrayAdapter<String> adaptadorPaises = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, paises);
         txtPais.setAdapter(adaptadorPaises);
 
@@ -84,12 +88,12 @@ public class MainActivity extends ActionBarActivity implements DatePickerDialog.
             @Override
             public void onClick(View v) {
                 DialogFragment datePickerFragment = new DateDialog();
-                datePickerFragment.show(getFragmentManager(), "Fecha de nacimiento");
+                datePickerFragment.show(getFragmentManager(), "Date");
 
             }
         });
 
-        // Se le asigna el evento al botón
+        // Se le asigna el evento al botón de mostrar información
         btnMostrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -125,7 +129,12 @@ public class MainActivity extends ActionBarActivity implements DatePickerDialog.
                     return;
                 }
                 correoElectronico = String.valueOf(txtCorreoElectronico.getText());
-                if (!validarCampo(correoElectronico,R.string.direccion)){
+                if (!validarCampo(correoElectronico,R.string.correo_electronico)){
+                    return;
+                }
+
+                nacimiento = String.valueOf(txtNacimiento.getText());
+                if (!validarCampo(nacimiento,R.string.nacimiento)){
                     return;
                 }
 
@@ -135,20 +144,16 @@ public class MainActivity extends ActionBarActivity implements DatePickerDialog.
                     if(rbFemenino.isChecked()){
                         sexo = getResources().getString(R.string.femenino);
                     }else{
-                        String mensaje = getResources().getString(R.string.no_texto)+ ": " + getResources().getString(R.string.sexo);
+                        String mensaje = getResources().getString(R.string.no_texto)+ ": " + getResources().getString(R.string.genero);
                         Toast.makeText(getApplicationContext(),mensaje,Toast.LENGTH_SHORT).show();
                         return;
                     }
                 }
 
-                nacimiento = String.valueOf(txtNacimiento.getText());
-                if (!validarCampo(nacimiento,R.string.nacimiento)){
-                    return;
-                }
-
                 favorito = cbFavorito.isChecked();
                 pasatiempo = spinPasatiempos.getSelectedItem().toString();
                 informacionContacto = new StringBuilder();
+
                 llenarStringBuilder(nombres,R.string.nombres,false);
                 llenarStringBuilder(apellidos,R.string.apellidos,false);
                 llenarStringBuilder(pais,R.string.pais,false);
@@ -156,9 +161,9 @@ public class MainActivity extends ActionBarActivity implements DatePickerDialog.
                 llenarStringBuilder(direccion,R.string.direccion,false);
                 llenarStringBuilder(correoElectronico,R.string.correo_electronico,false);
                 llenarStringBuilder(nacimiento,R.string.nacimiento,false);
-                llenarStringBuilder(sexo,R.string.sexo,false);
-
+                llenarStringBuilder(sexo,R.string.genero,false);
                 llenarStringBuilder(pasatiempo,R.string.pasatiempo,false);
+
                 if(favorito){
                     llenarStringBuilder(getResources().getString(R.string.verdadero),R.string.favorito,true);
                 }else{
@@ -168,25 +173,27 @@ public class MainActivity extends ActionBarActivity implements DatePickerDialog.
             }
         });
     }
+
     private void llenarStringBuilder(String campo, int referencia, boolean ultimaLinea){
-        informacionContacto.append(getResources().getText(referencia));
-        informacionContacto.append(": ");
+        String referenciaMayus = getResources().getText(referencia).toString().toUpperCase();
+        informacionContacto.append(referenciaMayus);
+        informacionContacto.append(": "+"\n");
         informacionContacto.append(campo);
         if (!ultimaLinea){
-            informacionContacto.append("\n");
+            informacionContacto.append("\n\n");
         }
     }
+
     private boolean validarCampo(String campo, int referencia){
          String mensaje;
          boolean retorno = true;
-         if (campo.isEmpty()){
+         if (campo.trim().isEmpty()){
             mensaje = getResources().getString(R.string.no_texto)+ ": " + getResources().getString(referencia);
             Toast.makeText(getApplicationContext(),mensaje,Toast.LENGTH_SHORT).show();
             retorno = false;
         }
          return retorno;
     }
-
 
     @Override
     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
@@ -212,7 +219,7 @@ public class MainActivity extends ActionBarActivity implements DatePickerDialog.
             stringBuilder.append("-");
         }
         stringBuilder.append(mDay);
-        mDateDisplay.setText(stringBuilder);
+        txtNacimiento.setText(stringBuilder);
     }
 
 }
