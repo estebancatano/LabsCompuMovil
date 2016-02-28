@@ -152,8 +152,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
 
                 favorito = cbFavorito.isChecked();
                 pasatiempo = spinPasatiempos.getSelectedItem().toString();
-                informacionContacto = new StringBuilder();
-
+                informacionContacto = new StringBuilder(getResources().getString(R.string.info_contacto) + "\n\n");
                 llenarStringBuilder(nombres,R.string.nombres,false);
                 llenarStringBuilder(apellidos,R.string.apellidos,false);
                 llenarStringBuilder(pais,R.string.pais,false);
