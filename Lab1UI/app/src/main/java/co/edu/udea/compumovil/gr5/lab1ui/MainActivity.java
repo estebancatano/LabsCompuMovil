@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                 String correoElectronico;
                 String pasatiempo;
                 String nacimiento;
-                String sexo;
+                String genero;
                 boolean favorito;
 
                 nombres = String.valueOf(txtNombres.getText());
@@ -139,10 +139,10 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                 }
 
                 if(rbMasculino.isChecked()){
-                    sexo = getResources().getString(R.string.masculino);
+                    genero = getResources().getString(R.string.masculino);
                 }else{
                     if(rbFemenino.isChecked()){
-                        sexo = getResources().getString(R.string.femenino);
+                        genero = getResources().getString(R.string.femenino);
                     }else{
                         String mensaje = getResources().getString(R.string.no_texto)+ ": " + getResources().getString(R.string.genero);
                         Toast.makeText(getApplicationContext(),mensaje,Toast.LENGTH_SHORT).show();
@@ -160,7 +160,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                 llenarStringBuilder(direccion,R.string.direccion,false);
                 llenarStringBuilder(correoElectronico,R.string.correo_electronico,false);
                 llenarStringBuilder(nacimiento,R.string.nacimiento,false);
-                llenarStringBuilder(sexo,R.string.genero,false);
+                llenarStringBuilder(genero,R.string.genero,false);
                 llenarStringBuilder(pasatiempo,R.string.pasatiempo,false);
 
                 if(favorito){
