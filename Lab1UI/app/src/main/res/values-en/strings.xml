@@ -1,10 +1,10 @@
 ﻿<resources>
-    <string name="app_name">Lab1UI</string>
+    <string name="app_name">Lab1 - User Interface</string>
     <string name="nombres">First name</string>
     <string name="apellidos">Last name</string>
     <string name="masculino">Male</string>
     <string name="femenino">Female</string>
-    <string name="sexo">Sex</string>
+    <string name="genero">Gender</string>
     <string name="pais">Country</string>
     <string name="telefono">Phone</string>
     <string name="direccion">Address</string>
@@ -12,13 +12,14 @@
     <string name="favorito">Favourite</string>
     <string name="pasatiempo">Hobby</string>
     <string name="nacimiento">Birth date</string>
+    <string name="formato_fecha">YYYY-MM-DD</string>
     <string name="mostrar">Show</string>
     <string name="no_texto"> You have not entered text for the field</string>
     <string name="verdadero">Yes</string>
     <string name="falso">No</string>
-    <string name="seleccion_fecha">Selection of Date</string>
     
     <string-array name="lista_pasatiempos">
+        <item>None</item>
         <item>Walk</item>
         <item>Sing</item>
         <item>Read</item>
