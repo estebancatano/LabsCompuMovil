@@ -17,6 +17,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener{
 
     StringBuilder informacionContacto;
@@ -31,26 +36,13 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        /*
-        // Check if we're running on Android 5.0 or higher
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            // Call some material design APIs here
-            //Obtener la referencia del widget Toolbar y se maneja como ActionBar
-            Toolbar toolbar = (Toolbar) findViewById(R.id.appbar);
-            if(toolbar != null) {
-                setSupportActionBar(toolbar);
-                getSupportActionBar().setTitle("Lab#1 - User Interface");
-                getSupportActionBar().setIcon(R.mipmap.logo_grupo5);
-            }
-        } else {
-            // Implement this feature without material design
-        }
-        */
-
+        //Crea el widget Toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.appbar);
         if(toolbar != null) {
+            //Referencia la ActionBar como Toolbar
             setSupportActionBar(toolbar);
-            getSupportActionBar().setTitle("Lab#1 - User Interface");
+            //Atributos de la Toolbar
+            getSupportActionBar().setTitle(R.string.app_name);
             getSupportActionBar().setIcon(R.mipmap.logo_grupo5);
         }
 
@@ -74,13 +66,19 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         String[] paises = getResources().getStringArray(R.array.lista_paises);
         String[] pasatiempos = getResources().getStringArray(R.array.lista_pasatiempos);
 
-        // Crea los adapatadores
+        // Crea el adaptador para los países
         ArrayAdapter<String> adaptadorPaises = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, paises);
         txtPais.setAdapter(adaptadorPaises);
 
+        // Crea el adaptador para los pasatiempos
         ArrayAdapter<String> adaptadorPasatiempos = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, pasatiempos);
         adaptadorPaises.setDropDownViewResource(R.layout.menu_spinner);
+
+        //Establece el adaptador para el widget Spinner
         spinPasatiempos.setAdapter(adaptadorPasatiempos);
+
+        //Carga la fecha actual en txtNacimiento
+        actualizarCampoFecha(obtenerFechaActual());
 
         // Evento en el campo de fecha de nacimiento
         txtNacimiento.setOnClickListener(new View.OnClickListener() {
@@ -106,37 +104,62 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                 String nacimiento;
                 String genero;
                 boolean favorito;
+                boolean fechaValida=true;
 
+                //Obtiene el dato y verifica el campo
                 nombres = String.valueOf(txtNombres.getText());
                 if (!validarCampo(nombres,R.string.nombres)){
                     return;
                 }
+
+                //Obtiene el dato y verifica el campo
                 apellidos = String.valueOf(txtApellidos.getText());
                 if (!validarCampo(apellidos,R.string.apellidos)){
                     return;
                 }
+
+                //Obtiene el dato y verifica el campo
                 pais = String.valueOf(txtPais.getText());
                 if (!validarCampo(pais,R.string.pais)){
                     return;
                 }
+
+                //Obtiene el dato y verifica el campo
                 telefono = String.valueOf(txtTelefono.getText());
                 if (!validarCampo(telefono,R.string.telefono)){
                     return;
                 }
+
+                //Obtiene el dato y verifica el campo
                 direccion = String.valueOf(txtDireccion.getText());
                 if (!validarCampo(direccion,R.string.direccion)){
                     return;
                 }
+
+                //Obtiene el dato y verifica el campo
                 correoElectronico = String.valueOf(txtCorreoElectronico.getText());
                 if (!validarCampo(correoElectronico,R.string.correo_electronico)){
                     return;
                 }
 
-                nacimiento = String.valueOf(txtNacimiento.getText());
-                if (!validarCampo(nacimiento,R.string.nacimiento)){
+
+                try {
+                    //Captura respuesta boolean del método validarFecha
+                    fechaValida = validarFecha(obtenerFechaActual());
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+                //Determina si la fecha es válida
+                if (fechaValida){
+                    //Obtiene el dato del campo correspondiente
+                    nacimiento = String.valueOf(txtNacimiento.getText());
+                }else{
+                    Toast.makeText(getApplicationContext(),R.string.fecha_invalida,Toast.LENGTH_SHORT).show();
                     return;
                 }
 
+                //Verifica selección del widget RadioGroup
                 if(rbMasculino.isChecked()){
                     genero = getResources().getString(R.string.masculino);
                 }else{
@@ -149,8 +172,10 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                     }
                 }
 
-                favorito = cbFavorito.isChecked();
+                //Obtiene item del widget Spinner
                 pasatiempo = spinPasatiempos.getSelectedItem().toString();
+
+                //Se pasan los datos al método que construye el texto a mostrar
                 informacionContacto = new StringBuilder(getResources().getString(R.string.info_contacto) + "\n\n");
                 llenarStringBuilder(nombres,R.string.nombres,false);
                 llenarStringBuilder(apellidos,R.string.apellidos,false);
@@ -162,6 +187,10 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                 llenarStringBuilder(genero,R.string.genero,false);
                 llenarStringBuilder(pasatiempo,R.string.pasatiempo,false);
 
+                //Obtiene selección del widget CheckBox
+                favorito = cbFavorito.isChecked();
+
+                //Verifica el estado del widget CheckBox
                 if(favorito){
                     llenarStringBuilder(getResources().getString(R.string.verdadero),R.string.favorito,true);
                 }else{
@@ -172,6 +201,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         });
     }
 
+    //Construye el texto a mostrar
     private void llenarStringBuilder(String campo, int referencia, boolean ultimaLinea){
         String referenciaMayus = getResources().getText(referencia).toString().toUpperCase();
         informacionContacto.append(referenciaMayus);
@@ -182,6 +212,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         }
     }
 
+    //Verifica si un campo de texto es vacío
     private boolean validarCampo(String campo, int referencia){
         String mensaje;
         boolean retorno = true;
@@ -193,31 +224,55 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         return retorno;
     }
 
+    //Obtiene la fecha seleccionada del widget DatePicker
     @Override
     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
         mYear = year;
-        mMonth = monthOfYear;
+        mMonth = monthOfYear+1;
         mDay = dayOfMonth;
-        updateDisplay();
+        int mDate[] = {mYear,mMonth,mDay};
+        actualizarCampoFecha(mDate);
     }
 
-    // Update the date in the TextView
-    private void updateDisplay() {
+    // Actualiza la fecha en el TextView
+    private void actualizarCampoFecha(int[] date) {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(mYear);
-        if (mMonth < 9){
+        stringBuilder.append(date[0]);
+        if (date[1] < 9){
             stringBuilder.append("-0");
         }else {
             stringBuilder.append("-");
         }
-        stringBuilder.append(mMonth+1);
-        if (mDay < 10){
+        stringBuilder.append(date[1]);
+        if (date[2] < 10){
             stringBuilder.append("-0");
         }else {
             stringBuilder.append("-");
         }
-        stringBuilder.append(mDay);
+        stringBuilder.append(date[2]);
         txtNacimiento.setText(stringBuilder);
     }
 
+    //Obtiene la fecha actual del dispositivo
+    public int[] obtenerFechaActual(){
+        final Calendar c = Calendar.getInstance();
+        int year = c.get(Calendar.YEAR);
+        int month = c.get(Calendar.MONTH);
+        int day = c.get(Calendar.DAY_OF_MONTH);
+        int date [] = {year,month+1,day};
+        return date;
+    }
+
+    //Verifica que la fecha no sea superior a la actual
+    public boolean validarFecha(int fecha[]) throws ParseException {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date fechaActual = sdf.parse(fecha[0]+"-"+fecha[1]+"-"+fecha[2]);
+        Date fechaIngresada = sdf.parse(mYear+"-"+mMonth+"-"+mDay);
+
+        if (fechaActual.compareTo(fechaIngresada)<0){
+            return false;
+        }else {
+            return true;
+        }
+    }
 }

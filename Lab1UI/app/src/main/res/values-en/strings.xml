@@ -18,6 +18,7 @@
     <string name="no_texto"> You have not entered text for the field</string>
     <string name="verdadero">Yes</string>
     <string name="falso">No</string>
+    <string name="fecha_invalida">Birth date entered is not valid</string>
     
     <string-array name="lista_pasatiempos">
         <item>None</item>
