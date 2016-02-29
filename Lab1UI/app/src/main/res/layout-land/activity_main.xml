@@ -14,7 +14,7 @@
         android:minHeight="?attr/actionBarSize"
         android:background="@color/primary"
         android:titleTextAppearance="@style/ToolbarTitle"
-        android:elevation="4dp"/>
+        android:elevation="@dimen/elevation_toolbar"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -183,7 +183,7 @@
             android:padding="@dimen/margin"
             android:layout_gravity="center_horizontal"
             android:background="@color/primary_light"
-            android:elevation="4dp">
+            android:elevation="@dimen/elevation_second_layout">
 
             <ScrollView
                 android:id="@+id/sv_down"
@@ -206,11 +206,11 @@
                 android:drawableLeft="@drawable/abc_ic_search_api_mtrl_alpha"
                 android:text="@string/mostrar"
                 android:background="@color/accent"
-                android:textSize="10sp"
-                android:paddingLeft="16dp"
-                android:paddingRight="16dp"
+                android:textSize="@dimen/text_size_landscape"
+                android:paddingLeft="@dimen/margin"
+                android:paddingRight="@dimen/margin"
                 android:gravity="center"
-                android:elevation="8dp"
+                android:elevation="@dimen/elevation_button"
                 android:layout_below="@id/sv_down"/>
 
         </RelativeLayout>
