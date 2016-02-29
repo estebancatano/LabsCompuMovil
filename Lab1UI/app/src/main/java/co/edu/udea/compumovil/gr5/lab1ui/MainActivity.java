@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         // Check if we're running on Android 5.0 or higher
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             // Call some material design APIs here
-
             //Obtener la referencia del widget Toolbar y se maneja como ActionBar
             Toolbar toolbar = (Toolbar) findViewById(R.id.appbar);
             if(toolbar != null) {
@@ -105,12 +104,12 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                 String correoElectronico;
                 String pasatiempo;
                 String nacimiento;
-                String sexo;
+                String genero;
                 boolean favorito;
 
                 nombres = String.valueOf(txtNombres.getText());
                 if (!validarCampo(nombres,R.string.nombres)){
-                     return;
+                    return;
                 }
                 apellidos = String.valueOf(txtApellidos.getText());
                 if (!validarCampo(apellidos,R.string.apellidos)){
@@ -139,10 +138,10 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                 }
 
                 if(rbMasculino.isChecked()){
-                    sexo = getResources().getString(R.string.masculino);
+                    genero = getResources().getString(R.string.masculino);
                 }else{
                     if(rbFemenino.isChecked()){
-                        sexo = getResources().getString(R.string.femenino);
+                        genero = getResources().getString(R.string.femenino);
                     }else{
                         String mensaje = getResources().getString(R.string.no_texto)+ ": " + getResources().getString(R.string.genero);
                         Toast.makeText(getApplicationContext(),mensaje,Toast.LENGTH_SHORT).show();
@@ -152,8 +151,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
 
                 favorito = cbFavorito.isChecked();
                 pasatiempo = spinPasatiempos.getSelectedItem().toString();
-                informacionContacto = new StringBuilder();
-
+                informacionContacto = new StringBuilder(getResources().getString(R.string.info_contacto) + "\n\n");
                 llenarStringBuilder(nombres,R.string.nombres,false);
                 llenarStringBuilder(apellidos,R.string.apellidos,false);
                 llenarStringBuilder(pais,R.string.pais,false);
@@ -161,7 +159,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                 llenarStringBuilder(direccion,R.string.direccion,false);
                 llenarStringBuilder(correoElectronico,R.string.correo_electronico,false);
                 llenarStringBuilder(nacimiento,R.string.nacimiento,false);
-                llenarStringBuilder(sexo,R.string.genero,false);
+                llenarStringBuilder(genero,R.string.genero,false);
                 llenarStringBuilder(pasatiempo,R.string.pasatiempo,false);
 
                 if(favorito){
@@ -185,14 +183,14 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     }
 
     private boolean validarCampo(String campo, int referencia){
-         String mensaje;
-         boolean retorno = true;
-         if (campo.trim().isEmpty()){
+        String mensaje;
+        boolean retorno = true;
+        if (campo.trim().isEmpty()){
             mensaje = getResources().getString(R.string.no_texto)+ ": " + getResources().getString(referencia);
             Toast.makeText(getApplicationContext(),mensaje,Toast.LENGTH_SHORT).show();
             retorno = false;
         }
-         return retorno;
+        return retorno;
     }
 
     @Override
