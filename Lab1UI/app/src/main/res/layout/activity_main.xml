@@ -18,12 +18,12 @@
     </android.support.v7.widget.Toolbar>
 
     <ScrollView
+        android:id="@+id/scrollView"
             android:layout_width="match_parent"
             android:layout_height="@dimen/none"
             android:layout_weight="3"
             android:padding="@dimen/margin"
-            android:id="@+id/scrollView"
-            android:layout_gravity="right">
+            android:layout_gravity="end">
 
             <RelativeLayout
                 android:orientation="vertical"
@@ -37,7 +37,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text_size"
                     android:gravity="center"
-                    android:inputType="textCapSentences|textCapWords|textNoSuggestions"
+                    android:inputType="textCapWords|textNoSuggestions"
                     android:hint="@string/nombres"
                     android:singleLine="true"
                     android:imeOptions="actionNext"/>
@@ -48,7 +48,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text_size"
                     android:gravity="center"
-                    android:inputType="textCapSentences|textCapWords|textNoSuggestions"
+                    android:inputType="textCapWords|textNoSuggestions"
                     android:hint="@string/apellidos"
                     android:layout_below="@id/txt_nombres"
                     android:singleLine="true"
@@ -60,7 +60,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text_size"
                     android:gravity="center"
-                    android:inputType="textAutoComplete"
+                    android:inputType="textCapSentences|textAutoComplete"
                     android:hint="@string/pais"
                     android:layout_below="@id/txt_apellidos"
                     android:singleLine="true"
@@ -106,12 +106,12 @@
                     android:id="@+id/txt_nacimiento"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/formato_fecha"
                     android:textSize="@dimen/text_size"
-                    android:textColor="@color/primary_text"
                     android:gravity="center"
-                    android:editable="false"
-                    android:layout_below="@+id/txt_correo_electronico"/>
+                    android:hint="@string/formato_fecha"
+                    android:layout_below="@+id/txt_correo_electronico"
+                    android:textColor="@color/primary_text"
+                    android:editable="false"/>
 
                 <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
                     android:id="@+id/rg_sexo"
@@ -138,13 +138,13 @@
                 </RadioGroup>
 
                 <TextView
+                    android:id="@+id/lbl_pasatiempo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/pasatiempo"
                     android:textSize="@dimen/text_size"
                     android:textColor="@color/primary_text"
                     android:layout_marginTop="@dimen/margin"
-                    android:id="@+id/lbl_pasatiempo"
                     android:layout_below="@+id/rg_sexo"/>
 
                 <Spinner
@@ -154,8 +154,7 @@
                     android:layout_marginTop="@dimen/margin"
                     android:layout_below="@id/rg_sexo"
                     android:layout_toRightOf="@id/lbl_pasatiempo"
-                    android:backgroundTint="@android:color/holo_blue_light"
-                    android:layout_centerInParent="true" />
+                    android:backgroundTint="@color/accent"/>
 
                 <CheckBox
                     android:id="@+id/cb_favorito"
@@ -166,7 +165,6 @@
                     android:layout_centerInParent="true"
                     android:layout_below="@id/spin_pasatiempos"
                     android:checked="false" />
-
 
             </RelativeLayout>
     </ScrollView>

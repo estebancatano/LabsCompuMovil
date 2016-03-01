@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         spinPasatiempos.setAdapter(adaptadorPasatiempos);
 
         //Carga la fecha actual en txtNacimiento
-        actualizarCampoFecha(obtenerFechaActual());
+        //actualizarCampoFecha(obtenerFechaActual());
 
         // Evento en el campo de fecha de nacimiento
         txtNacimiento.setOnClickListener(new View.OnClickListener() {
@@ -106,42 +106,47 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                 boolean favorito;
                 boolean fechaValida=true;
 
-                //Obtiene el dato y verifica el campo
+                //Obtiene el dato y valida el campo
                 nombres = String.valueOf(txtNombres.getText());
                 if (!validarCampo(nombres,R.string.nombres)){
                     return;
                 }
 
-                //Obtiene el dato y verifica el campo
+                //Obtiene el dato y valida el campo
                 apellidos = String.valueOf(txtApellidos.getText());
                 if (!validarCampo(apellidos,R.string.apellidos)){
                     return;
                 }
 
-                //Obtiene el dato y verifica el campo
+                //Obtiene el dato y valida el campo
                 pais = String.valueOf(txtPais.getText());
                 if (!validarCampo(pais,R.string.pais)){
                     return;
                 }
 
-                //Obtiene el dato y verifica el campo
+                //Obtiene el dato y valida el campo
                 telefono = String.valueOf(txtTelefono.getText());
                 if (!validarCampo(telefono,R.string.telefono)){
                     return;
                 }
 
-                //Obtiene el dato y verifica el campo
+                //Obtiene el dato y valida el campo
                 direccion = String.valueOf(txtDireccion.getText());
                 if (!validarCampo(direccion,R.string.direccion)){
                     return;
                 }
 
-                //Obtiene el dato y verifica el campo
+                //Obtiene el dato y valida el campo
                 correoElectronico = String.valueOf(txtCorreoElectronico.getText());
                 if (!validarCampo(correoElectronico,R.string.correo_electronico)){
                     return;
                 }
 
+                //Obtiene el dato y valida el campo
+                nacimiento = String.valueOf(txtNacimiento.getText());
+                if (!validarCampo(nacimiento,R.string.nacimiento)){
+                    return;
+                }
 
                 try {
                     //Captura respuesta boolean del método validarFecha
@@ -151,10 +156,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                 }
 
                 //Determina si la fecha es válida
-                if (fechaValida){
-                    //Obtiene el dato del campo correspondiente
-                    nacimiento = String.valueOf(txtNacimiento.getText());
-                }else{
+                if (!fechaValida){
                     Toast.makeText(getApplicationContext(),R.string.fecha_invalida,Toast.LENGTH_SHORT).show();
                     return;
                 }
