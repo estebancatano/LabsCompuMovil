@@ -77,9 +77,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         //Establece el adaptador para el widget Spinner
         spinPasatiempos.setAdapter(adaptadorPasatiempos);
 
-        //Carga la fecha actual en txtNacimiento
-        //actualizarCampoFecha(obtenerFechaActual());
-
         // Evento en el campo de fecha de nacimiento
         txtNacimiento.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -60,7 +60,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text_size"
                     android:gravity="center"
-                    android:inputType="textCapSentences|textAutoComplete"
+                    android:inputType="textAutoComplete|textCapWords"
                     android:hint="@string/pais"
                     android:layout_below="@id/txt_apellidos"
                     android:singleLine="true"
