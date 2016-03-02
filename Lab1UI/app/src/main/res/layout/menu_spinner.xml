@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TextView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    style="?android:attr/spinnerItemStyle"
+    android:singleLine="true"
+    android:textColor="@color/primary_text"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:textSize="35sp"
-    android:padding="5dp">
+    android:padding="5dp"
+    android:ellipsize="marquee">
 </TextView>

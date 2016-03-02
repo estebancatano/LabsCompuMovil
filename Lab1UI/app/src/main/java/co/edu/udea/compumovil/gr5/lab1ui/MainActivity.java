@@ -5,7 +5,9 @@ import android.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -70,9 +72,34 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         ArrayAdapter<String> adaptadorPaises = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, paises);
         txtPais.setAdapter(adaptadorPaises);
 
-        // Crea el adaptador para los pasatiempos
-        ArrayAdapter<String> adaptadorPasatiempos = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, pasatiempos);
         adaptadorPaises.setDropDownViewResource(R.layout.menu_spinner);
+
+        // Crea el adaptador para los pasatiempos
+        ArrayAdapter<String> adaptadorPasatiempos = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, pasatiempos){
+
+            //Establecer tamaño de texto para el Spinner
+            public View getView(int position, View convertView,ViewGroup parent) {
+
+                View v = super.getView(position, convertView, parent);
+
+                ((TextView) v).setTextSize(16);
+
+                return v;
+
+            }
+
+            //Establecer alineación del texto del Spinner
+            public View getDropDownView(int position, View convertView,ViewGroup parent) {
+
+                View v = super.getDropDownView(position, convertView,parent);
+
+                ((TextView) v).setGravity(Gravity.CENTER);
+
+                return v;
+
+            }
+
+        };
 
         //Establece el adaptador para el widget Spinner
         spinPasatiempos.setAdapter(adaptadorPasatiempos);
