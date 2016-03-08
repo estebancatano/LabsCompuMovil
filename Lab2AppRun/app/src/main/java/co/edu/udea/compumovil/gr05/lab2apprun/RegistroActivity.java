@@ -11,6 +11,10 @@ public class RegistroActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
 
+        setToolbar();
+    }
+
+    private void setToolbar() {
         //Crea el widget Toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.appbar);
         if(toolbar != null) {

@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:minHeight="?attr/actionBarSize"
         android:background="@color/colorPrimary"
-        android:elevation="4dp">
+        android:elevation="@dimen/elevation4">
 
     </android.support.v7.widget.Toolbar>
 
@@ -27,7 +27,7 @@
         <EditText
             android:id="@+id/txt_usuario"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/height_button"
+            android:layout_height="@dimen/regular_height"
             android:hint="USUARIO"
             android:textSize="25sp"
             android:gravity="center"
@@ -36,7 +36,7 @@
         <EditText
             android:id="@+id/txt_contrasena"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/height_button"
+            android:layout_height="@dimen/regular_height"
             android:hint="CONTRASEÑA"
             android:textSize="25sp"
             android:gravity="center"
@@ -48,24 +48,24 @@
         <Button
             android:id="@+id/btn_entrar"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/height_button"
+            android:layout_height="@dimen/regular_height"
             android:text="ENTRAR"
             android:textSize="25sp"
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/margin"
             android:background="@color/colorAccent"
-            android:elevation="4dp"/>
+            android:elevation="@dimen/elevation4"/>
 
         <Button
             android:id="@+id/btn_registro"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/height_button"
+            android:layout_height="@dimen/regular_height"
             android:text="REGISTRARSE"
             android:textSize="25sp"
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/margin"
             android:background="@color/colorAccent"
-            android:elevation="4dp"/>
+            android:elevation="@dimen/elevation4"/>
 
     </LinearLayout>
 </LinearLayout>

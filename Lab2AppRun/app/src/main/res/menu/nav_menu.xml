@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_eventos"
+            android:title="@string/eventos_item"/>
+        <!--android:icon="@drawable/xxx" -->
+
+        <item
+            android:id="@+id/nav_perfil"
+            android:checked="true"
+            android:title="@string/perfil_item"/>
+            <!--android:icon="@drawable/xxx" -->
+
+
+
+
+        <!-- Sección de configuración -->
+        <item
+            android:id="@+id/configuration_section"
+            android:title="@string/configuracion_item">
+            <menu>
+                <item
+                    android:id="@+id/nav_cerrar_sesion"
+                    android:title="@string/cerra_sesion_item"/>
+                <!--android:icon="@drawable/xxx" -->
+                <item
+                    android:id="@+id/nav_acercade"
+                    android:title="@string/acercade_item"/>
+                <!--android:icon="@drawable/xxx" -->
+            </menu>
+        </item>
+    </group>
+
+</menu>

@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">Lab2-AppRun</string>
 
-    <string name="action_settings">Settings</string>
+    <!-- Items NavDrawer -->
+    <string name="perfil_item">Perfil</string>
+    <string name="eventos_item">Eventos</string>
+    <string name="acercade_item">Acerca de</string>
+    <string name="cerra_sesion_item">Cerrar sesión</string>
+    <string name="configuracion_item">Configuración</string>
 </resources>
