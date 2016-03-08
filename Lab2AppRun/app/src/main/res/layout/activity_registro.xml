@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="co.edu.udea.compumovil.gr05.lab2apprun.MainActivity">
+    tools:context="co.edu.udea.compumovil.gr05.lab2apprun.RegistroActivity">
 
     <android.support.v7.widget.Toolbar
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -41,31 +41,31 @@
             android:textSize="25sp"
             android:gravity="center"
             android:layout_marginTop="@dimen/margin"
+            android:inputType="textPassword|textNoSuggestions"/>
+
+        <EditText
+            android:id="@+id/txt_correo"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_button"
+            android:hint="CORREO ELECTRÓNICO"
+            android:textSize="25sp"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/margin"
             android:layout_marginBottom="@dimen/margin"
-            android:inputType="textPassword"/>
-
+            android:inputType="textEmailAddress|textNoSuggestions"/>
 
         <Button
-            android:id="@+id/btn_entrar"
+            android:id="@+id/btn_guardar"
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_button"
-            android:text="ENTRAR"
+            android:text="GUARDAR"
             android:textSize="25sp"
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/margin"
             android:background="@color/colorAccent"
             android:elevation="4dp"/>
 
-        <Button
-            android:id="@+id/btn_registro"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/height_button"
-            android:text="REGISTRARSE"
-            android:textSize="25sp"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/margin"
-            android:background="@color/colorAccent"
-            android:elevation="4dp"/>
 
     </LinearLayout>
+
 </LinearLayout>

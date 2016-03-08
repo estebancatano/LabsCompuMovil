@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">Lab2AppRun</string>
+    <string name="app_name">Lab2-AppRun</string>
+
+    <string name="action_settings">Settings</string>
 </resources>
