@@ -7,4 +7,7 @@
     <string name="acercade_item">Acerca de</string>
     <string name="cerra_sesion_item">Cerrar sesión</string>
     <string name="configuracion_item">Configuración</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
