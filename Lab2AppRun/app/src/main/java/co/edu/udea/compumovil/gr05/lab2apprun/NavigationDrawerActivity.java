@@ -44,15 +44,6 @@ public class NavigationDrawerActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        if (!drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            getMenuInflater().inflate(R.menu.nav_menu, menu);
-            return true;
-        }
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
@@ -61,6 +52,7 @@ public class NavigationDrawerActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
 
     private void setToolbar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);

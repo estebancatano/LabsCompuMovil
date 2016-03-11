@@ -5,32 +5,35 @@
 
         <item
             android:id="@+id/nav_eventos"
-            android:title="@string/eventos_item"/>
-        <!--android:icon="@drawable/xxx" -->
+            android:title="@string/eventos_item"
+            android:checked="true"
+            android:icon="@drawable/ic_calendar"/>
+
 
         <item
             android:id="@+id/nav_perfil"
-            android:checked="true"
-            android:title="@string/perfil_item"/>
-            <!--android:icon="@drawable/xxx" -->
+            android:title="@string/perfil_item"
+            android:icon="@drawable/ic_profile"/>
 
-
+        <item
+            android:id="@+id/nav_acercade"
+            android:title="@string/acercade_item"
+            android:icon="@drawable/ic_info"/>
 
 
         <!-- Sección de configuración -->
         <item
             android:id="@+id/configuration_section"
             android:title="@string/configuracion_item">
-            <menu>
-                <item
-                    android:id="@+id/nav_cerrar_sesion"
-                    android:title="@string/cerra_sesion_item"/>
-                <!--android:icon="@drawable/xxx" -->
-                <item
-                    android:id="@+id/nav_acercade"
-                    android:title="@string/acercade_item"/>
-                <!--android:icon="@drawable/xxx" -->
-            </menu>
+    <menu>
+
+         <item
+           android:id="@+id/nav_cerrar_sesion"
+           android:title="@string/cerra_sesion_item"
+           android:icon="@drawable/ic_logout"/>
+
+
+    </menu>
         </item>
     </group>
 

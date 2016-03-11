@@ -37,13 +37,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btn_entrar:
                 Intent intentEntrar = new Intent(this, NavigationDrawerActivity.class);
                 startActivity(intentEntrar);
-                this.finish();
                 break;
 
             case R.id.btn_registro:
                 Intent intentRegistro = new Intent(this, RegistroActivity.class);
                 startActivity(intentRegistro);
-                this.finish();
                 break;
         }
     }
@@ -57,7 +55,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //Atributos de la Toolbar
             getSupportActionBar().setTitle(R.string.app_name);
             getSupportActionBar().setIcon(R.mipmap.logo_grupo5);
-
         }
     }
 }
