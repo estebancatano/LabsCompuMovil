@@ -64,6 +64,7 @@ public class NavigationDrawerActivity extends AppCompatActivity {
         if (ab != null) {
             // Colocar ícono del drawer toggle
             ab.setHomeAsUpIndicator(R.drawable.ic_menu);
+            ab.setIcon(R.mipmap.logo_grupo5);
             ab.setDisplayHomeAsUpEnabled(true);
         }
     }

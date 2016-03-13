@@ -1,19 +1,36 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="co.edu.udea.compumovil.gr05.lab2apprun.PerfilFragment">
 
+
+    <ImageView
+        android:layout_marginTop="60dp"
+        android:layout_width="@dimen/image_size"
+        android:layout_height="@dimen/image_size"
+        android:layout_gravity="center"
+        android:id="@+id/imageView"
+        android:background="@color/colorAccent"/>
+
     <TextView
-        android:padding="16dp"
-        android:layout_width="match_parent"
+        android:id="@+id/lbl_nombre_usuario"
+        android:layout_marginTop="@dimen/margin"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:background="@color/colorAccent"
-        android:text="MI PERFIL"
-        android:textSize="50sp"
-        android:textColor="@color/primary_text"
-        android:gravity="center"/>
+        android:text="Nombre de usuario"
+        android:textSize="30sp"/>
+
+    <TextView
+        android:id="@+id/lbl_email"
+        android:layout_marginTop="@dimen/margin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Correo electrónico"
+        android:textSize="25sp"/>
 
 
-</FrameLayout>
+</LinearLayout>
