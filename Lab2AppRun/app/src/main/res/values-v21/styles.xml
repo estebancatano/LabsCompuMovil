@@ -9,16 +9,14 @@
 
         <!-- Sobreposición de Toolbar y NavDrawer -->
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
-        <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
 
     <style name="ToolbarTitle" parent="@style/TextAppearance.Widget.AppCompat.Toolbar.Title">
         <item name="android:textSize">20sp</item>
     </style>
 
-    <style name="Theme.NavDrawer" parent="Base.AppTheme">
+    <style name="Theme.NavDrawer" parent="AppTheme">
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
-        <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
 
 
