@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="co.edu.udea.compumovil.gr05.lab2apprun.MainActivity">
+    tools:context=".InicioActivity">
 
     <android.support.v7.widget.Toolbar
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -28,7 +28,7 @@
             android:id="@+id/txt_usuario"
             android:layout_width="match_parent"
             android:layout_height="@dimen/regular_height"
-            android:hint="USUARIO"
+            android:hint="@string/usuario"
             android:textSize="25sp"
             android:gravity="center"
             android:layout_marginTop="@dimen/margin"/>
@@ -37,7 +37,7 @@
             android:id="@+id/txt_contrasena"
             android:layout_width="match_parent"
             android:layout_height="@dimen/regular_height"
-            android:hint="CONTRASEÑA"
+            android:hint="@string/contrasena"
             android:textSize="25sp"
             android:gravity="center"
             android:layout_marginTop="@dimen/margin"
@@ -49,7 +49,7 @@
             android:id="@+id/btn_entrar"
             android:layout_width="match_parent"
             android:layout_height="@dimen/regular_height"
-            android:text="ENTRAR"
+            android:text="@string/entrar"
             android:textSize="25sp"
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/margin"
@@ -60,7 +60,7 @@
             android:id="@+id/btn_registro"
             android:layout_width="match_parent"
             android:layout_height="@dimen/regular_height"
-            android:text="REGISTRARSE"
+            android:text="@string/registrarse"
             android:textSize="25sp"
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/margin"
