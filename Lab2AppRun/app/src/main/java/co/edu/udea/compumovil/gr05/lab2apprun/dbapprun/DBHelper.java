@@ -82,7 +82,6 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         // Se guarda la fila en la base de datos
         try {
-            db.delete(DBAppRun.TABLE_USERS,null,null);
             db.insertWithOnConflict(tabla, null, valores, SQLiteDatabase.CONFLICT_IGNORE);
             Log.d(TAG, "Insertado en la base de datos");
         } catch (Exception ex) {
@@ -92,14 +91,14 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
-    public ArrayList<Usuario> consultarUsuario(DBHelper dbHelper, String user, String pass) {
+    public ArrayList<Usuario> consultarCarreras(String user, String pass) {
         String[] campos = new String[]{TableColumnsUser.EMAIL, TableColumnsUser.FOTO};
         String[] argumentos = new String[]{user, pass};
         String consulta = TableColumnsUser.USUARIO + "=? AND " + TableColumnsUser.CONTRASEÑA + "=?";
         ArrayList<Usuario> retornoConsulta = new ArrayList<>();
         SQLiteDatabase db = null;
         try {
-            db = dbHelper.getWritableDatabase();
+            db = this.getWritableDatabase();
             Cursor c = db.query(DBAppRun.TABLE_USERS, campos, consulta, argumentos, null, null, null);
             //Nos aseguramos de que existe al menos un registro
             if (c.moveToFirst()) {
@@ -122,5 +121,39 @@ public class DBHelper extends SQLiteOpenHelper {
             db.close();
         }
         return retornoConsulta;
+    }
+
+    public Usuario consultarUsuarioInicio(String user, String pass) {
+        String[] campos = new String[]{TableColumnsUser.EMAIL, TableColumnsUser.FOTO};
+        String[] argumentos = new String[]{user, pass};
+        String consulta = TableColumnsUser.USUARIO + "=? AND " + TableColumnsUser.CONTRASEÑA + "=?";
+        SQLiteDatabase db = this.getWritableDatabase();
+        Usuario usuario = null;
+        try {
+            Cursor c = db.query(DBAppRun.TABLE_USERS, campos, consulta, argumentos, null, null, null);
+            //Nos aseguramos de que existe al menos un registro
+            if (c.moveToFirst()) {
+                //Recorremos el cursor hasta que no haya más registros
+                do {
+                    usuario = new Usuario();
+                    usuario.setUsuario(user);
+                    usuario.setContrasena(pass);
+                    usuario.setEmail(c.getString(c.getColumnIndex(TableColumnsUser.EMAIL)));
+                    usuario.setFoto(c.getBlob(c.getColumnIndex(TableColumnsUser.FOTO)));
+                } while (c.moveToNext());
+                Log.d(TAG, "Se ha consultado en la base de datos");
+            }else{
+                Log.d(TAG,"No hay registro");
+            }
+        } catch (Exception ex) {
+            Log.e(TAG, "Error al consultar en la base de datos");
+        } finally {
+            db.close();
+        }
+        return usuario;
+    }
+
+    public boolean consultarUsuarioRegistro(String user){
+        return false;
     }
 }
