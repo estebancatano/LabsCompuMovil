@@ -1,6 +1,8 @@
 package co.edu.udea.compumovil.gr05.lab2apprun;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
@@ -41,17 +43,24 @@ public class InicioActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        setToolbar();
+        SharedPreferences preferencias = getSharedPreferences("PreferenciasUsuario",Context.MODE_PRIVATE);
+        String correo = preferencias.getString("usuario", "usuarioDefecto");
+        if ("usuarioDefecto".compareTo(correo) == 0) {
+            setToolbar();
 
-        dbHelper = new DBHelper(this);
-        dbHelper.insertInitialDates();
+            dbHelper = new DBHelper(this);
+            dbHelper.insertInitialDates();
 
-        btnEntrar = (Button) findViewById(R.id.btn_entrar);
-        btnRegistro = (Button) findViewById(R.id.btn_registro);
-        txtUsuario = (EditText) findViewById(R.id.txt_usuario);
-        txtContrasena = (EditText) findViewById(R.id.txt_contrasena);
-        btnRegistro.setOnClickListener(this);
-        btnEntrar.setOnClickListener(this);
+            btnEntrar = (Button) findViewById(R.id.btn_entrar);
+            btnRegistro = (Button) findViewById(R.id.btn_registro);
+            txtUsuario = (EditText) findViewById(R.id.txt_usuario);
+            txtContrasena = (EditText) findViewById(R.id.txt_contrasena);
+            btnRegistro.setOnClickListener(this);
+            btnEntrar.setOnClickListener(this);
+        }else{
+            Intent intentEntrar = new Intent(this, NavigationDrawerActivity.class);
+            startActivity(intentEntrar);
+        }
     }
 
     @Override
@@ -85,12 +94,17 @@ public class InicioActivity extends AppCompatActivity implements View.OnClickLis
                     return;
                 } else {
                     Bundle parametros = new Bundle();
-
                     parametros.putString("usuario", listaUsuario.get(0).getUsuario());
                     parametros.putString("contrasena", listaUsuario.get(0).getContrasena());
                     parametros.putString("email", listaUsuario.get(0).getEmail());
                     parametros.putByteArray("foto", listaUsuario.get(0).getFoto());
+                    SharedPreferences preferencias = getSharedPreferences("PreferenciasUsuario", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preferencias.edit();
+                    editor.putString("usuario", listaUsuario.get(0).getUsuario());
+                    editor.putString("email", listaUsuario.get(0).getUsuario());
+                    editor.commit();
                     Intent intentEntrar = new Intent(this, NavigationDrawerActivity.class);
+                    intentEntrar.putExtras(parametros);
                     startActivity(intentEntrar);
                 }
                 break;
