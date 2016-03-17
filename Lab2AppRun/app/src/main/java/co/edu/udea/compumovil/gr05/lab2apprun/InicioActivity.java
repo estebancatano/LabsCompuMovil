@@ -11,6 +11,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
 import com.google.android.gms.appindexing.Action;
 
 import co.edu.udea.compumovil.gr05.lab2apprun.dbapprun.DBHelper;
@@ -28,7 +30,8 @@ public class InicioActivity extends AppCompatActivity implements View.OnClickLis
     public static final String TAG_CORREO = "Correo";
     public static final String TAG_FOTO = "Foto";
     public static final String TAG_PREFERENCIAS = "PreferenciasUsuario";
-    public static final String TAG_USUARIO_DEFEFECTO = "usuarioDefecto";
+    public static final String TAG_USUARIO_DEFECTO = "usuarioDefecto";
+    public static int REQUEST_CODE = 5;
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -40,12 +43,12 @@ public class InicioActivity extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.activity_main);
 
         SharedPreferences preferencias = getSharedPreferences(TAG_PREFERENCIAS,Context.MODE_PRIVATE);
-        String correo = preferencias.getString(TAG_USUARIO, TAG_USUARIO_DEFEFECTO);
-        if (TAG_USUARIO_DEFEFECTO.compareTo(correo) == 0) {
+        String correo = preferencias.getString(TAG_USUARIO, TAG_USUARIO_DEFECTO);
+        if (TAG_USUARIO_DEFECTO.compareTo(correo) == 0) {
             setToolbar();
 
             dbHelper = new DBHelper(this);
-            //dbHelper.insertInitialDates();
+            dbHelper.insertInitialDates();
 
             btnEntrar = (Button) findViewById(R.id.btn_entrar);
             btnRegistro = (Button) findViewById(R.id.btn_registro);
@@ -57,6 +60,19 @@ public class InicioActivity extends AppCompatActivity implements View.OnClickLis
             Intent intentEntrar = new Intent(this, NavigationDrawerActivity.class);
             startActivity(intentEntrar);
         }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == RESULT_OK && requestCode == REQUEST_CODE) {
+            if (data.hasExtra(InicioActivity.TAG_USUARIO)) {
+               txtUsuario.setText(data.getExtras().getString(InicioActivity.TAG_USUARIO));
+            }
+            if (data.hasExtra(InicioActivity.TAG_CONTRASENA)) {
+                txtContrasena.setText(data.getExtras().getString(InicioActivity.TAG_CONTRASENA));
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override
@@ -74,22 +90,19 @@ public class InicioActivity extends AppCompatActivity implements View.OnClickLis
                 if ("".compareTo(usuario) == 0) {
                     String mensaje = getResources().getString(R.string.no_texto) + ": " +
                             getResources().getString(R.string.usuario);
-                    Snackbar.make(v, mensaje, Snackbar.LENGTH_SHORT)
-                            .setAction(null, null).show();
+                    Snackbar.make(v, mensaje, Snackbar.LENGTH_SHORT).show();
                     return;
                 }
                 if ("".compareTo(contrasena) == 0) {
                     String mensaje = getResources().getString(R.string.no_texto) + ": " +
                             getResources().getString(R.string.contrasena);
-                    Snackbar.make(v, mensaje, Snackbar.LENGTH_SHORT)
-                            .setAction(null, null).show();
+                    Snackbar.make(v, mensaje, Snackbar.LENGTH_SHORT).show();
                     return;
                 }
                 usuarioDB = dbHelper.consultarUsuarioInicio(usuario, contrasena);
                 if (usuarioDB == null) {
                     String mensaje = getResources().getString(R.string.no_usuario);
-                    Snackbar.make(v, mensaje, Snackbar.LENGTH_SHORT)
-                            .setAction(null, null).show();
+                    Snackbar.make(v, mensaje, Snackbar.LENGTH_SHORT).show();
                     return;
                 } else {
                     Bundle parametros = new Bundle();
@@ -113,7 +126,7 @@ public class InicioActivity extends AppCompatActivity implements View.OnClickLis
                 txtUsuario.setText(null);
                 txtContrasena.setText(null);
                 Intent intentRegistro = new Intent(this, RegistroActivity.class);
-                startActivity(intentRegistro);
+                startActivityForResult(intentRegistro, REQUEST_CODE);
                 break;
         }
     }

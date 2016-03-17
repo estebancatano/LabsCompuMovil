@@ -47,8 +47,6 @@ public class DBHelper extends SQLiteOpenHelper {
         //Sentencia para crear la tabla
         Log.d(TAG, "onCreate with SQL: " + sql);
         db.execSQL(sql);
-
-        insertInitialDates();
     }
 
     @Override
@@ -66,7 +64,6 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(sql);
 
         onCreate(db);
-        insertInitialDates();
     }
 
     public void insertInitialDates() {
@@ -154,6 +151,29 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     public boolean consultarUsuarioRegistro(String user){
-        return false;
+        String[] campos = new String[]{TableColumnsUser.USUARIO};
+        String[] argumentos = new String[]{user};
+        String consulta = TableColumnsUser.USUARIO + "=?";
+        SQLiteDatabase db = this.getWritableDatabase();
+        boolean retorno = false;
+        try {
+            Cursor c = db.query(DBAppRun.TABLE_USERS, campos, consulta, argumentos, null, null, null);
+            //Nos aseguramos de que existe al menos un registro
+            if (c.moveToFirst()) {
+                //Recorremos el cursor hasta que no haya más registros
+                do {
+                    retorno = true;
+                } while (c.moveToNext());
+                Log.d(TAG, "Se ha consultado en la base de datos");
+            }else{
+                Log.d(TAG,"No hay existe el registro");
+                retorno = false;
+            }
+        } catch (Exception ex) {
+            Log.e(TAG, "Error al consultar en la base de datos");
+        } finally {
+            db.close();
+        }
+        return retorno;
     }
 }

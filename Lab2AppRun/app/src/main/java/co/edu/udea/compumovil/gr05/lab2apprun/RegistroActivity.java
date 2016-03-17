@@ -1,8 +1,10 @@
 package co.edu.udea.compumovil.gr05.lab2apprun;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -13,7 +15,9 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import co.edu.udea.compumovil.gr05.lab2apprun.dbapprun.DBAppRun;
 import co.edu.udea.compumovil.gr05.lab2apprun.dbapprun.DBHelper;
+import co.edu.udea.compumovil.gr05.lab2apprun.dbapprun.TableColumnsUser;
 import co.edu.udea.compumovil.gr05.lab2apprun.model.Usuario;
 
 public class RegistroActivity extends AppCompatActivity implements View.OnClickListener{
@@ -35,6 +39,8 @@ public class RegistroActivity extends AppCompatActivity implements View.OnClickL
         txtCorreo = (EditText) findViewById(R.id.txt_correo);
         setToolbar();
 
+        dbHelper = new DBHelper(this);
+
         btnGuardar.setOnClickListener(this);
     }
 
@@ -47,39 +53,51 @@ public class RegistroActivity extends AppCompatActivity implements View.OnClickL
         // Extraer los datos ingresados
         usuario = txtUsuario.getText().toString();
         contrasena = txtContrasena.getText().toString();
-        correo = txtUsuario.getText().toString();
+        correo = txtCorreo.getText().toString();
         boolean existeUsuario = false;
         // Verificar que se ingresen los datos
         if ("".compareTo(usuario) == 0) {
             String mensaje = getResources().getString(R.string.no_texto) + ": " +
                     getResources().getString(R.string.usuario);
-            Toast.makeText(getApplicationContext(), mensaje, Toast.LENGTH_SHORT).show();
+            Snackbar.make(v, mensaje, Snackbar.LENGTH_SHORT).show();
             return;
         }
         if ("".compareTo(contrasena) == 0) {
             String mensaje = getResources().getString(R.string.no_texto) + ": " +
                     getResources().getString(R.string.contrasena);
-            Toast.makeText(getApplicationContext(), mensaje, Toast.LENGTH_SHORT).show();
+            Snackbar.make(v, mensaje, Snackbar.LENGTH_SHORT).show();
             return;
         }
         if ("".compareTo(correo) == 0) {
             String mensaje = getResources().getString(R.string.no_texto) + ": " +
                     getResources().getString(R.string.correo);
-            Toast.makeText(getApplicationContext(), mensaje, Toast.LENGTH_SHORT).show();
+            Snackbar.make(v, mensaje, Snackbar.LENGTH_SHORT).show();
             return;
         }
         existeUsuario = dbHelper.consultarUsuarioRegistro(usuario);
         if (existeUsuario) {
-            String mensaje = getResources().getString(R.string.no_usuario);
-            Toast.makeText(getApplicationContext(), mensaje, Toast.LENGTH_SHORT).show();
+            String mensaje = getResources().getString(R.string.existe_usuario);
+            Snackbar.make(v, mensaje, Snackbar.LENGTH_SHORT).show();
             return;
         } else {
-            Bundle parametros = new Bundle();
-            //parametros.putString(InicioActivity.TAG_USUARIO, listaUsuario.get(0).getUsuario());
-            //parametros.putString(InicioActivity.TAG_CONTRASENA, listaUsuario.get(0).getContrasena());
-            Intent intentEntrar = new Intent(this, NavigationDrawerActivity.class);
-            intentEntrar.putExtras(parametros);
-            startActivity(intentEntrar);
+            // Se prepara el ContentValues para insertar el usuario
+            ContentValues values = new ContentValues();
+            values.put(TableColumnsUser.USUARIO, usuario);
+            values.put(TableColumnsUser.CONTRASEÑA, contrasena);
+            values.put(TableColumnsUser.EMAIL, correo);
+            values.put(TableColumnsUser.FOTO, (byte[]) null);
+            dbHelper.insertar(DBAppRun.TABLE_USERS, values);
+
+            String mensaje = getResources().getString(R.string.usuario_registrado);
+            Toast.makeText(this,mensaje,Toast.LENGTH_LONG).show();
+
+            Intent intentResult = new Intent();
+            intentResult.putExtra(InicioActivity.TAG_USUARIO, usuario);
+            intentResult.putExtra(InicioActivity.TAG_CONTRASENA, contrasena);
+            intentResult.putExtra(InicioActivity.TAG_CORREO, correo);
+            // Activity finished ok, return the data
+            setResult(RESULT_OK, intentResult);
+            this.finish();
         }
     }
 
