@@ -28,11 +28,17 @@ import co.edu.udea.compumovil.gr05.lab2apprun.dbapprun.TableColumnsUser;
 import co.edu.udea.compumovil.gr05.lab2apprun.model.Usuario;
 
 public class InicioActivity extends AppCompatActivity implements View.OnClickListener {
-    EditText txtUsuario;
-    EditText txtContrasena;
-    Button btnEntrar;
-    Button btnRegistro;
-    DBHelper dbHelper;
+    private EditText txtUsuario;
+    private EditText txtContrasena;
+    private Button btnEntrar;
+    private Button btnRegistro;
+    private DBHelper dbHelper;
+
+    public static final String TAG_USUARIO = "Usuario";
+    public static final String TAG_CONTRASENA = "Contrasena";
+    public static final String TAG_CORREO = "Correo";
+    public static final String TAG_FOTO = "Foto";
+    public static final String TAG_PREFERENCIAS = "PreferenciasUsuario";
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -43,8 +49,8 @@ public class InicioActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        SharedPreferences preferencias = getSharedPreferences("PreferenciasUsuario",Context.MODE_PRIVATE);
-        String correo = preferencias.getString("usuario", "usuarioDefecto");
+        SharedPreferences preferencias = getSharedPreferences(TAG_PREFERENCIAS,Context.MODE_PRIVATE);
+        String correo = preferencias.getString(TAG_USUARIO, "usuarioDefecto");
         if ("usuarioDefecto".compareTo(correo) == 0) {
             setToolbar();
 
@@ -69,7 +75,7 @@ public class InicioActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.btn_entrar:
                 String usuario;
                 String contrasena;
-                ArrayList<Usuario> listaUsuario;
+                Usuario usuarioDB;
                 // Extraer los datos ingresados
                 usuario = txtUsuario.getText().toString();
                 contrasena = txtContrasena.getText().toString();
@@ -87,21 +93,21 @@ public class InicioActivity extends AppCompatActivity implements View.OnClickLis
                     Toast.makeText(getApplicationContext(), mensaje, Toast.LENGTH_SHORT).show();
                     return;
                 }
-                listaUsuario = dbHelper.consultarUsuario(dbHelper,usuario, contrasena);
-                if (listaUsuario.isEmpty()) {
+                usuarioDB = dbHelper.consultarUsuarioInicio(usuario, contrasena);
+                if (usuarioDB == null) {
                     String mensaje = getResources().getString(R.string.no_usuario);
                     Toast.makeText(getApplicationContext(), mensaje, Toast.LENGTH_SHORT).show();
                     return;
                 } else {
                     Bundle parametros = new Bundle();
-                    parametros.putString("usuario", listaUsuario.get(0).getUsuario());
-                    parametros.putString("contrasena", listaUsuario.get(0).getContrasena());
-                    parametros.putString("email", listaUsuario.get(0).getEmail());
-                    parametros.putByteArray("foto", listaUsuario.get(0).getFoto());
-                    SharedPreferences preferencias = getSharedPreferences("PreferenciasUsuario", Context.MODE_PRIVATE);
+                    parametros.putString(TAG_USUARIO, usuarioDB.getUsuario());
+                    parametros.putString(TAG_CONTRASENA, usuarioDB.getContrasena());
+                    parametros.putString(TAG_CORREO, usuarioDB.getEmail());
+                    parametros.putByteArray(TAG_FOTO, usuarioDB.getFoto());
+                    SharedPreferences preferencias = getSharedPreferences(TAG_PREFERENCIAS, Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = preferencias.edit();
-                    editor.putString("usuario", listaUsuario.get(0).getUsuario());
-                    editor.putString("email", listaUsuario.get(0).getUsuario());
+                    editor.putString(TAG_USUARIO, usuarioDB.getUsuario());
+                    editor.putString(TAG_CORREO, usuarioDB.getEmail());
                     editor.commit();
                     Intent intentEntrar = new Intent(this, NavigationDrawerActivity.class);
                     intentEntrar.putExtras(parametros);

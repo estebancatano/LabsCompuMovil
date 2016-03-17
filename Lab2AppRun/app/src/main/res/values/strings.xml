@@ -14,4 +14,6 @@
     <string name="contrasena">CONTRASEÑA</string>
     <string name="entrar">ENTRAR</string>
     <string name="registrarse">REGISTRARSE</string>
+    <string name="correo">CORREO ELECTRÓNICO</string>
+    <string name="guardar">GUARDAR</string>
 </resources>
