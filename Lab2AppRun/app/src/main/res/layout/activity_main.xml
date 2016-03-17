@@ -31,6 +31,8 @@
             android:hint="@string/usuario"
             android:textSize="25sp"
             android:gravity="center"
+            android:singleLine="true"
+            android:imeOptions="actionNext"
             android:layout_marginTop="@dimen/margin"/>
 
         <EditText
@@ -42,6 +44,8 @@
             android:gravity="center"
             android:layout_marginTop="@dimen/margin"
             android:layout_marginBottom="@dimen/margin"
+            android:singleLine="true"
+            android:imeOptions="actionDone"
             android:inputType="textPassword"/>
 
 

@@ -3,28 +3,17 @@ package co.edu.udea.compumovil.gr05.lab2apprun;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
-import android.support.v7.app.ActionBar;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
-
 import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.common.api.GoogleApiClient;
 
-import java.util.ArrayList;
-
-import co.edu.udea.compumovil.gr05.lab2apprun.dbapprun.DBAppRun;
 import co.edu.udea.compumovil.gr05.lab2apprun.dbapprun.DBHelper;
-import co.edu.udea.compumovil.gr05.lab2apprun.dbapprun.TableColumnsUser;
 import co.edu.udea.compumovil.gr05.lab2apprun.model.Usuario;
 
 public class InicioActivity extends AppCompatActivity implements View.OnClickListener {
@@ -84,19 +73,22 @@ public class InicioActivity extends AppCompatActivity implements View.OnClickLis
                 if ("".compareTo(usuario) == 0) {
                     String mensaje = getResources().getString(R.string.no_texto) + ": " +
                             getResources().getString(R.string.usuario);
-                    Toast.makeText(getApplicationContext(), mensaje, Toast.LENGTH_SHORT).show();
+                    Snackbar.make(v, mensaje, Snackbar.LENGTH_SHORT)
+                            .setAction("Acción", null).show();
                     return;
                 }
                 if ("".compareTo(contrasena) == 0) {
                     String mensaje = getResources().getString(R.string.no_texto) + ": " +
                             getResources().getString(R.string.contrasena);
-                    Toast.makeText(getApplicationContext(), mensaje, Toast.LENGTH_SHORT).show();
+                    Snackbar.make(v, mensaje, Snackbar.LENGTH_SHORT)
+                            .setAction("Acción", null).show();
                     return;
                 }
                 usuarioDB = dbHelper.consultarUsuarioInicio(usuario, contrasena);
                 if (usuarioDB == null) {
                     String mensaje = getResources().getString(R.string.no_usuario);
-                    Toast.makeText(getApplicationContext(), mensaje, Toast.LENGTH_SHORT).show();
+                    Snackbar.make(v, mensaje, Snackbar.LENGTH_SHORT)
+                            .setAction("Acción", null).show();
                     return;
                 } else {
                     Bundle parametros = new Bundle();
