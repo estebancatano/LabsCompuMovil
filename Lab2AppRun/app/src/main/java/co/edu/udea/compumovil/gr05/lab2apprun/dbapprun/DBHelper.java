@@ -10,6 +10,7 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import co.edu.udea.compumovil.gr05.lab2apprun.model.Evento;
 import co.edu.udea.compumovil.gr05.lab2apprun.model.Usuario;
 
 /**
@@ -88,25 +89,30 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
-    public ArrayList<Usuario> consultarCarreras(String user, String pass) {
-        String[] campos = new String[]{TableColumnsUser.EMAIL, TableColumnsUser.FOTO};
-        String[] argumentos = new String[]{user, pass};
-        String consulta = TableColumnsUser.USUARIO + "=? AND " + TableColumnsUser.CONTRASEÑA + "=?";
-        ArrayList<Usuario> retornoConsulta = new ArrayList<>();
+    public ArrayList<Evento> consultarCarreras() {
+        String[] campos = new String[]{TableColumnsEvents.NOMBRE,
+                TableColumnsEvents.DESCRIPCION, TableColumnsEvents.DISTANCIA, TableColumnsEvents.LUGAR,
+                TableColumnsEvents.FECHA, TableColumnsEvents.TELEFONO, TableColumnsEvents.EMAIL,
+                TableColumnsEvents.FOTO};
+        ArrayList<Evento> retornoConsulta = new ArrayList<>();
         SQLiteDatabase db = null;
         try {
             db = this.getWritableDatabase();
-            Cursor c = db.query(DBAppRun.TABLE_USERS, campos, consulta, argumentos, null, null, null);
+            Cursor c = db.query(DBAppRun.TABLE_USERS, campos, null, null, null, null, null);
             //Nos aseguramos de que existe al menos un registro
             if (c.moveToFirst()) {
                 //Recorremos el cursor hasta que no haya más registros
                 do {
-                    Usuario usuario = new Usuario();
-                    usuario.setUsuario(user);
-                    usuario.setContrasena(pass);
-                    usuario.setEmail(c.getString(c.getColumnIndex(TableColumnsUser.EMAIL)));
-                    usuario.setFoto(c.getBlob(c.getColumnIndex(TableColumnsUser.FOTO)));
-                    retornoConsulta.add(usuario);
+                    Evento evento = new Evento();
+                    evento.setNombre(c.getString(c.getColumnIndex(TableColumnsEvents.NOMBRE)));
+                    evento.setDescripcion(c.getString(c.getColumnIndex(TableColumnsEvents.DESCRIPCION)));
+                    evento.setDistancia(c.getString(c.getColumnIndex(TableColumnsEvents.DISTANCIA)));
+                    evento.setLugar(c.getString(c.getColumnIndex(TableColumnsEvents.LUGAR)));
+                    evento.setFecha(c.getString(c.getColumnIndex(TableColumnsEvents.FECHA)));
+                    evento.setTelefono(c.getString(c.getColumnIndex(TableColumnsEvents.TELEFONO)));
+                    evento.setCorreo(c.getString(c.getColumnIndex(TableColumnsEvents.EMAIL)));
+                    evento.setFoto(c.getBlob(c.getColumnIndex(TableColumnsEvents.FOTO)));
+                    retornoConsulta.add(evento);
                 } while (c.moveToNext());
                 Log.d(TAG, "Se ha consultado en la base de datos");
             }else{
