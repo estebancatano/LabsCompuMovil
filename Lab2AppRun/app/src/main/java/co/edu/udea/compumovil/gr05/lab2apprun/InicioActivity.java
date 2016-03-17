@@ -28,6 +28,7 @@ public class InicioActivity extends AppCompatActivity implements View.OnClickLis
     public static final String TAG_CORREO = "Correo";
     public static final String TAG_FOTO = "Foto";
     public static final String TAG_PREFERENCIAS = "PreferenciasUsuario";
+    public static final String TAG_USUARIO_DEFEFECTO = "usuarioDefecto";
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -39,12 +40,12 @@ public class InicioActivity extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.activity_main);
 
         SharedPreferences preferencias = getSharedPreferences(TAG_PREFERENCIAS,Context.MODE_PRIVATE);
-        String correo = preferencias.getString(TAG_USUARIO, "usuarioDefecto");
-        if ("usuarioDefecto".compareTo(correo) == 0) {
+        String correo = preferencias.getString(TAG_USUARIO, TAG_USUARIO_DEFEFECTO);
+        if (TAG_USUARIO_DEFEFECTO.compareTo(correo) == 0) {
             setToolbar();
 
             dbHelper = new DBHelper(this);
-            dbHelper.insertInitialDates();
+            //dbHelper.insertInitialDates();
 
             btnEntrar = (Button) findViewById(R.id.btn_entrar);
             btnRegistro = (Button) findViewById(R.id.btn_registro);
@@ -74,21 +75,21 @@ public class InicioActivity extends AppCompatActivity implements View.OnClickLis
                     String mensaje = getResources().getString(R.string.no_texto) + ": " +
                             getResources().getString(R.string.usuario);
                     Snackbar.make(v, mensaje, Snackbar.LENGTH_SHORT)
-                            .setAction("Acción", null).show();
+                            .setAction(null, null).show();
                     return;
                 }
                 if ("".compareTo(contrasena) == 0) {
                     String mensaje = getResources().getString(R.string.no_texto) + ": " +
                             getResources().getString(R.string.contrasena);
                     Snackbar.make(v, mensaje, Snackbar.LENGTH_SHORT)
-                            .setAction("Acción", null).show();
+                            .setAction(null, null).show();
                     return;
                 }
                 usuarioDB = dbHelper.consultarUsuarioInicio(usuario, contrasena);
                 if (usuarioDB == null) {
                     String mensaje = getResources().getString(R.string.no_usuario);
                     Snackbar.make(v, mensaje, Snackbar.LENGTH_SHORT)
-                            .setAction("Acción", null).show();
+                            .setAction(null, null).show();
                     return;
                 } else {
                     Bundle parametros = new Bundle();
@@ -104,10 +105,13 @@ public class InicioActivity extends AppCompatActivity implements View.OnClickLis
                     Intent intentEntrar = new Intent(this, NavigationDrawerActivity.class);
                     intentEntrar.putExtras(parametros);
                     startActivity(intentEntrar);
+                    this.finish();
                 }
                 break;
 
             case R.id.btn_registro:
+                txtUsuario.setText(null);
+                txtContrasena.setText(null);
                 Intent intentRegistro = new Intent(this, RegistroActivity.class);
                 startActivity(intentRegistro);
                 break;

@@ -1,6 +1,9 @@
 package co.edu.udea.compumovil.gr05.lab2apprun;
 
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -107,7 +110,11 @@ public class NavigationDrawerActivity extends AppCompatActivity {
                 break;
 
             case "Cerrar sesión":
-                logout();
+                SharedPreferences preferencias = getSharedPreferences(InicioActivity.TAG_PREFERENCIAS, Context.MODE_PRIVATE);
+                preferencias.edit().clear().commit();
+                finish();
+                Intent intent = new Intent(this,InicioActivity.class);
+                startActivity(intent);
                 break;
         }
 
@@ -118,11 +125,5 @@ public class NavigationDrawerActivity extends AppCompatActivity {
             setTitle(title); // Setear título actual
         }
         drawerLayout.closeDrawers(); // Cerrar drawer
-
-
-    }
-
-    public void logout(){
-        this.finish();
     }
 }

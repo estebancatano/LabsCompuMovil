@@ -48,7 +48,7 @@ public class DBHelper extends SQLiteOpenHelper {
         Log.d(TAG, "onCreate with SQL: " + sql);
         db.execSQL(sql);
 
-        //insertInitialDates();
+        insertInitialDates();
     }
 
     @Override
