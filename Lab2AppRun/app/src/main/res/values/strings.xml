@@ -24,4 +24,8 @@
     <string name="distancia_evento">Distancia</string>
     <string name="lugar_evento">Lugar</string>
     <string name="fecha_evento">Fecha</string>
+    <string name="no_foto">Sin Foto</string>
+    <string name="foto_camara">Subir desde la cámara</string>
+    <string name="foto_galeria">Subir desde la galeria</string>
+    <string name="subir">Subir</string>
 </resources>

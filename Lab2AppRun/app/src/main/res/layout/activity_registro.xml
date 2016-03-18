@@ -54,6 +54,44 @@
             android:layout_marginBottom="@dimen/margin"
             android:inputType="textEmailAddress|textNoSuggestions"/>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="@dimen/margin">
+
+            <RadioGroup
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/rg_radio_group"
+                android:checkedButton="@+id/rb_no_foto">
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/no_foto"
+                    android:id="@+id/rb_no_foto" />
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/foto_camara"
+                    android:id="@+id/rb_camara" />
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/foto_galeria"
+                    android:id="@+id/rb_galeria" />
+            </RadioGroup>
+            <Button
+                android:id="@+id/btn_subir"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/regular_height"
+                android:text="@string/subir"
+                android:textSize="25sp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="@dimen/margin"
+                android:background="@color/colorAccent"
+                android:elevation="@dimen/elevation4"/>
+        </LinearLayout>
         <Button
             android:id="@+id/btn_guardar"
             android:layout_width="match_parent"
@@ -65,7 +103,9 @@
             android:background="@color/colorAccent"
             android:elevation="@dimen/elevation4"/>
 
-
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/img_view" />
     </LinearLayout>
-
 </LinearLayout>
