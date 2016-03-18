@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    card_view:cardCornerRadius="4dp"
+    card_view:cardElevation="4dp"
+    card_view:cardUseCompatPadding="true">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imagen_evento"
+            android:layout_width="100dp"
+            android:layout_height="150dp"
+            android:scaleType="centerCrop"
+            android:background="#aaaaaa"/>
+
+        <TextView
+            android:id="@+id/lbl_nombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/nombre_evento"
+            android:layout_toRightOf="@+id/imagen_evento"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"/>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:background="#ffd5d5d5"
+            android:id="@+id/linea"
+            android:layout_below="@+id/lbl_nombre"
+            android:layout_toRightOf="@+id/imagen_evento">
+
+        </View>
+
+        <TextView
+            android:id="@+id/lbl_distancia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/distancia_evento"
+            android:layout_below="@+id/lbl_nombre"
+            android:layout_alignLeft="@+id/lbl_nombre"
+            android:layout_marginTop="10dp"/>
+
+
+        <TextView
+            android:id="@+id/lbl_lugar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/lugar_evento"
+            android:layout_below="@id/lbl_distancia"
+            android:layout_toRightOf="@+id/imagen_evento"
+            android:layout_alignLeft="@id/lbl_nombre"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:id="@+id/lbl_fecha"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/fecha_evento"
+            android:layout_below="@id/lbl_lugar"
+            android:layout_toRightOf="@+id/imagen_evento"
+            android:layout_alignLeft="@id/lbl_nombre"
+            android:layout_marginTop="10dp"/>
+
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

@@ -18,4 +18,10 @@
     <string name="registrarse">REGISTRARSE</string>
     <string name="correo">CORREO ELECTRÓNICO</string>
     <string name="guardar">GUARDAR</string>
+
+    <!-- CardView Evento -->
+    <string name="nombre_evento">Nombre</string>
+    <string name="distancia_evento">Distancia</string>
+    <string name="lugar_evento">Lugar</string>
+    <string name="fecha_evento">Fecha</string>
 </resources>

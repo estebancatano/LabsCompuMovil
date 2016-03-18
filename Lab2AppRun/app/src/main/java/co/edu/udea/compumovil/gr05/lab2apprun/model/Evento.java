@@ -16,6 +16,13 @@ public class Evento {
     public Evento() {
     }
 
+    public Evento(String nombre, String distancia, String lugar, String fecha) {
+        this.nombre = nombre;
+        this.distancia = distancia;
+        this.lugar = lugar;
+        this.fecha = fecha;
+    }
+
     public String getNombre() {
         return nombre;
     }
