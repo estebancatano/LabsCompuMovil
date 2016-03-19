@@ -1,9 +1,12 @@
 package co.edu.udea.compumovil.gr05.lab2apprun;
 
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -20,7 +23,7 @@ import co.edu.udea.compumovil.gr05.lab2apprun.model.Evento;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class EventosFragment extends Fragment implements View.OnClickListener {
+public class EventosFragment extends Fragment implements View.OnClickListener{
 
     private RecyclerView recycler;
     private RecyclerView.Adapter adapter;
@@ -29,7 +32,6 @@ public class EventosFragment extends Fragment implements View.OnClickListener {
     public EventosFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -45,9 +47,9 @@ public class EventosFragment extends Fragment implements View.OnClickListener {
         items.add(new Evento("CARRERA 1","48","Medellín","01-04-2016"));
         items.add(new Evento("CARRERA 2","20","Bogotá","02-04-2016"));
         items.add(new Evento("CARRERA 3","5","Cali","03-04-2016"));
-        items.add(new Evento("CARRERA 4","9","Florencia","04-04-2016"));
+        items.add(new Evento("CARRERA 4", "9", "Florencia", "04-04-2016"));
         items.add(new Evento("CARRERA 5","17","Cali","05-04-2016"));
-        items.add(new Evento("CARRERA 6","32","Medellín","06-04-2016"));
+        items.add(new Evento("CARRERA 6", "32", "Medellín", "06-04-2016"));
 
 
         // Obtener el Recycler
@@ -59,21 +61,23 @@ public class EventosFragment extends Fragment implements View.OnClickListener {
         recycler.setLayoutManager(layoutManager);
 
         // Crear un nuevo adaptador
-        adapter = new EventosAdapter(items);
+        adapter = new EventosAdapter(getContext(),items);
         recycler.setAdapter(adapter);
 
         fab = (ImageButton) view.findViewById(R.id.fab);
-        //fab.setOnClickListener(this);
+        fab.setOnClickListener(this);
 
         return view;
     }
 
     @Override
     public void onClick(View v) {
+        Intent intent;
         switch (v.getId()){
             case R.id.fab:
-                Intent intent = new Intent(getActivity(),NuevoEvento.class);
+                intent = new Intent(getActivity(),NuevoEventoActivity.class);
                 getActivity().startActivity(intent);
+                break;
         }
     }
 }
