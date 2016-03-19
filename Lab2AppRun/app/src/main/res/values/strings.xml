@@ -11,6 +11,7 @@
     <string name="existe_usuario">El usuario ingresado ya existe en la base de datos</string>
     <string name="no_usuario">El usuario o la contraseña ingresada son incorrectos</string>
     <string name="usuario_registrado">El usuario ha sido registrado</string>
+    <string name="foto_cargada">La imagen ha sido subida correctamente</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="usuario">USUARIO</string>
     <string name="contrasena">CONTRASEÑA</string>

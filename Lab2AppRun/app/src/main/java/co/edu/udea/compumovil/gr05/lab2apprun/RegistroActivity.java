@@ -22,6 +22,7 @@ import android.widget.Toast;
 import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
@@ -30,7 +31,7 @@ import co.edu.udea.compumovil.gr05.lab2apprun.dbapprun.DBHelper;
 import co.edu.udea.compumovil.gr05.lab2apprun.dbapprun.TableColumnsUser;
 import co.edu.udea.compumovil.gr05.lab2apprun.model.Usuario;
 
-public class RegistroActivity extends AppCompatActivity implements View.OnClickListener{
+public class RegistroActivity extends AppCompatActivity implements View.OnClickListener {
     private final static int FOTO_GALERIA = 70;
     private final static int FOTO_CAMARA = 80;
 
@@ -70,7 +71,7 @@ public class RegistroActivity extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.btn_guardar:
                 String usuario;
                 String contrasena;
@@ -120,20 +121,19 @@ public class RegistroActivity extends AppCompatActivity implements View.OnClickL
                     Intent intentResult = new Intent();
                     intentResult.putExtra(InicioActivity.TAG_USUARIO, usuario);
                     intentResult.putExtra(InicioActivity.TAG_CONTRASENA, contrasena);
-                    intentResult.putExtra(InicioActivity.TAG_CORREO, correo);
                     // Activity finished ok, return the data
                     setResult(RESULT_OK, intentResult);
                     this.finish();
                 }
-                    break;
+                break;
             case R.id.btn_subir:
-                if (!rbNoFoto.isChecked()){
+                if (!rbNoFoto.isChecked()) {
                     Intent intent = null;
                     int codigo = 0;
-                    if (rbCamara.isChecked()){
+                    if (rbCamara.isChecked()) {
                         intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                         codigo = FOTO_CAMARA;
-                    }else if (rbGaleria.isChecked()){
+                    } else if (rbGaleria.isChecked()) {
                         intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI);
                         codigo = FOTO_GALERIA;
                     }
@@ -147,39 +147,29 @@ public class RegistroActivity extends AppCompatActivity implements View.OnClickL
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK){
-            if (requestCode == FOTO_GALERIA){
-                Uri imagenSeleccionada = data.getData();
-                InputStream is = null;
-                try {
-                    is = getContentResolver().openInputStream(imagenSeleccionada);
-                    BufferedInputStream bis = new BufferedInputStream(is);
-                    Bitmap bitmap = BitmapFactory.decodeStream(bis);
-                    foto = getBitmapAsByteArray(bitmap);
-                } catch (FileNotFoundException e) {}
-            }else if (requestCode == FOTO_CAMARA){
-                if(data != null){
-                    Uri imagenSeleccionada = data.getData();
-                    InputStream is = null;
-                    try {
-                        is = getContentResolver().openInputStream(imagenSeleccionada);
-                        BufferedInputStream bis = new BufferedInputStream(is);
-                        Bitmap bitmap = BitmapFactory.decodeStream(bis);
-                        foto = getBitmapAsByteArray(bitmap);
-                        ImageView im = (ImageView) findViewById(R.id.img_view);
-                        im.setImageBitmap(bitmap);
-                    } catch (FileNotFoundException e) {}
-                }
+        if (resultCode == RESULT_OK && (requestCode == FOTO_GALERIA || requestCode == FOTO_CAMARA)) {
+            Uri imagenSeleccionada = data.getData();
+            InputStream is = null;
+            try {
+                is = getContentResolver().openInputStream(imagenSeleccionada);
+                foto = getBytes(is);
+                String mensaje = getResources().getString(R.string.foto_cargada);
+                Snackbar.make(btnSubir, mensaje, Snackbar.LENGTH_LONG).show();
+                //Bitmap bitmap = BitmapFactory.decodeByteArray(foto, 0, foto.length);
+                //ImageView im = (ImageView) findViewById(R.id.img_view);
+                //im.setImageBitmap(bitmap);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
-
-
     }
 
     private void setToolbar() {
         //Crea el widget Toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.appbar);
-        if(toolbar != null) {
+        if (toolbar != null) {
             //Referencia la ActionBar como Toolbar
             setSupportActionBar(toolbar);
             //Atributos de la Toolbar
@@ -193,5 +183,16 @@ public class RegistroActivity extends AppCompatActivity implements View.OnClickL
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG, 0, outputStream);
         return outputStream.toByteArray();
+    }
+
+    public byte[] getBytes(InputStream inputStream) throws IOException {
+        ByteArrayOutputStream byteBuffer = new ByteArrayOutputStream();
+        int bufferSize = 1024;
+        byte[] buffer = new byte[bufferSize];
+        int len = 0;
+        while ((len = inputStream.read(buffer)) != -1) {
+            byteBuffer.write(buffer, 0, len);
+        }
+        return byteBuffer.toByteArray();
     }
 }

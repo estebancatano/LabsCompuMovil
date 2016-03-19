@@ -11,7 +11,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.google.android.gms.appindexing.Action;
 
@@ -40,11 +39,11 @@ public class InicioActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_inicio);
 
         SharedPreferences preferencias = getSharedPreferences(TAG_PREFERENCIAS,Context.MODE_PRIVATE);
-        String correo = preferencias.getString(TAG_USUARIO, TAG_USUARIO_DEFECTO);
-        if (TAG_USUARIO_DEFECTO.compareTo(correo) == 0) {
+        String usuario = preferencias.getString(TAG_USUARIO, TAG_USUARIO_DEFECTO);
+        if (TAG_USUARIO_DEFECTO.compareTo(usuario) == 0) {
             setToolbar();
 
             dbHelper = new DBHelper(this);
@@ -58,6 +57,7 @@ public class InicioActivity extends AppCompatActivity implements View.OnClickLis
             btnEntrar.setOnClickListener(this);
         }else{
             Intent intentEntrar = new Intent(this, NavigationDrawerActivity.class);
+            intentEntrar.putExtra(TAG_USUARIO,usuario);
             startActivity(intentEntrar);
         }
     }
@@ -81,7 +81,7 @@ public class InicioActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.btn_entrar:
                 String usuario;
                 String contrasena;
-                Usuario usuarioDB;
+                boolean existeUsuario;
                 // Extraer los datos ingresados
                 usuario = txtUsuario.getText().toString();
                 contrasena = txtContrasena.getText().toString();
@@ -90,33 +90,27 @@ public class InicioActivity extends AppCompatActivity implements View.OnClickLis
                 if ("".compareTo(usuario) == 0) {
                     String mensaje = getResources().getString(R.string.no_texto) + ": " +
                             getResources().getString(R.string.usuario);
-                    Snackbar.make(v, mensaje, Snackbar.LENGTH_SHORT).show();
+                    Snackbar.make(v, mensaje, Snackbar.LENGTH_LONG).show();
                     return;
                 }
                 if ("".compareTo(contrasena) == 0) {
                     String mensaje = getResources().getString(R.string.no_texto) + ": " +
                             getResources().getString(R.string.contrasena);
-                    Snackbar.make(v, mensaje, Snackbar.LENGTH_SHORT).show();
+                    Snackbar.make(v, mensaje, Snackbar.LENGTH_LONG).show();
                     return;
                 }
-                usuarioDB = dbHelper.consultarUsuarioInicio(usuario, contrasena);
-                if (usuarioDB == null) {
+                existeUsuario = dbHelper.consultarUsuarioInicio(usuario,contrasena);
+                if (!existeUsuario) {
                     String mensaje = getResources().getString(R.string.no_usuario);
-                    Snackbar.make(v, mensaje, Snackbar.LENGTH_SHORT).show();
+                    Snackbar.make(v, mensaje, Snackbar.LENGTH_LONG).show();
                     return;
                 } else {
-                    Bundle parametros = new Bundle();
-                    parametros.putString(TAG_USUARIO, usuarioDB.getUsuario());
-                    parametros.putString(TAG_CONTRASENA, usuarioDB.getContrasena());
-                    parametros.putString(TAG_CORREO, usuarioDB.getEmail());
-                    parametros.putByteArray(TAG_FOTO, usuarioDB.getFoto());
                     SharedPreferences preferencias = getSharedPreferences(TAG_PREFERENCIAS, Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = preferencias.edit();
-                    editor.putString(TAG_USUARIO, usuarioDB.getUsuario());
-                    editor.putString(TAG_CORREO, usuarioDB.getEmail());
+                    editor.putString(TAG_USUARIO, usuario);
                     editor.commit();
                     Intent intentEntrar = new Intent(this, NavigationDrawerActivity.class);
-                    intentEntrar.putExtras(parametros);
+                    intentEntrar.putExtra(TAG_USUARIO,usuario);
                     startActivity(intentEntrar);
                     this.finish();
                 }

@@ -126,21 +126,23 @@ public class DBHelper extends SQLiteOpenHelper {
         return retornoConsulta;
     }
 
-    public Usuario consultarUsuarioInicio(String user, String pass) {
+    public Usuario consultarUsuario(String user) {
         String[] campos = new String[]{TableColumnsUser.EMAIL, TableColumnsUser.FOTO};
-        String[] argumentos = new String[]{user, pass};
-        String consulta = TableColumnsUser.USUARIO + "=? AND " + TableColumnsUser.CONTRASEÑA + "=?";
+        String[] argumentos = new String[]{user};
+        String consulta = TableColumnsUser.USUARIO + "=?";
+        //String sql = String.format("SELECT %s, %s FROM %s WHERE %s = %s", TableColumnsUser.EMAIL,
+        //        TableColumnsUser.FOTO, DBAppRun.TABLE_USERS, TableColumnsUser.USUARIO,user);
         SQLiteDatabase db = this.getWritableDatabase();
         Usuario usuario = null;
         try {
             Cursor c = db.query(DBAppRun.TABLE_USERS, campos, consulta, argumentos, null, null, null);
-            //Nos aseguramos de que existe al menos un registro
+            //Cursor c = db.rawQuery(sql,null);
+            //Nos aseguramos de que existe al menos {un registro
             if (c.moveToFirst()) {
                 //Recorremos el cursor hasta que no haya más registros
                 do {
                     usuario = new Usuario();
                     usuario.setUsuario(user);
-                    usuario.setContrasena(pass);
                     usuario.setEmail(c.getString(c.getColumnIndex(TableColumnsUser.EMAIL)));
                     usuario.setFoto(c.getBlob(c.getColumnIndex(TableColumnsUser.FOTO)));
                 } while (c.moveToNext());
@@ -148,12 +150,40 @@ public class DBHelper extends SQLiteOpenHelper {
             }else{
                 Log.d(TAG,"No hay registro");
             }
+            c.close();
         } catch (Exception ex) {
             Log.e(TAG, "Error al consultar en la base de datos");
         } finally {
             db.close();
         }
         return usuario;
+    }
+
+    public boolean consultarUsuarioInicio(String user, String pass){
+        String[] campos = new String[]{TableColumnsUser.USUARIO};
+        String[] argumentos = new String[]{user, pass};
+        String consulta = TableColumnsUser.USUARIO + "=? AND " + TableColumnsUser.CONTRASEÑA + "=?";
+        SQLiteDatabase db = this.getWritableDatabase();
+        boolean retorno = false;
+        try {
+            Cursor c = db.query(DBAppRun.TABLE_USERS, campos, consulta, argumentos, null, null, null);
+            //Nos aseguramos de que existe al menos un registro
+            if (c.moveToFirst()) {
+                //Recorremos el cursor hasta que no haya más registros
+                do {
+                    retorno = true;
+                } while (c.moveToNext());
+                Log.d(TAG, "Se ha consultado en la base de datos");
+            }else{
+                Log.d(TAG,"No hay existe el registro");
+                retorno = false;
+            }
+        } catch (Exception ex) {
+            Log.e(TAG, "Error al consultar en la base de datos");
+        } finally {
+            db.close();
+        }
+        return retorno;
     }
 
     public boolean consultarUsuarioRegistro(String user){
@@ -182,4 +212,5 @@ public class DBHelper extends SQLiteOpenHelper {
         }
         return retorno;
     }
+
 }
