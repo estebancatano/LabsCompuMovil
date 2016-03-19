@@ -1,7 +1,8 @@
 package co.edu.udea.compumovil.gr05.lab2apprun;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,28 +20,12 @@ import co.edu.udea.compumovil.gr05.lab2apprun.model.Evento;
 public class EventosAdapter extends RecyclerView.Adapter<EventosAdapter.EventosViewHolder> {
 
     private List<Evento> listaEventos;
+    private LayoutInflater inflater;
+    private Context context;
 
-    public static class EventosViewHolder extends RecyclerView.ViewHolder{
-
-        //Campos de cada item
-        //public ImageView imagenEvento;
-        public TextView nombreEvento;
-        public TextView distanciaEvento;
-        public TextView lugarEvento;
-        public TextView fechaEvento;
-
-        public EventosViewHolder(View view) {
-            super(view);
-
-            //imagenEvento = (ImageView) view.findViewById(R.id.imagen_evento);
-            nombreEvento = (TextView) view.findViewById(R.id.lbl_nombre);
-            distanciaEvento = (TextView) view.findViewById(R.id.lbl_distancia);
-            lugarEvento = (TextView) view.findViewById(R.id.lbl_lugar);
-            fechaEvento = (TextView) view.findViewById(R.id.lbl_fecha);
-        }
-    }
-
-    public EventosAdapter(List<Evento> listaEventos) {
+    public EventosAdapter(Context context, List<Evento> listaEventos) {
+        this.context = context;
+        inflater = LayoutInflater.from(context);
         this.listaEventos = listaEventos;
     }
 
@@ -54,6 +39,7 @@ public class EventosAdapter extends RecyclerView.Adapter<EventosAdapter.EventosV
     public EventosViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext()).
                 inflate(R.layout.card_evento,viewGroup,false);
+        EventosViewHolder eventosViewHolder = new EventosViewHolder(v);
         return new EventosViewHolder(v);
     }
 
@@ -73,8 +59,36 @@ public class EventosAdapter extends RecyclerView.Adapter<EventosAdapter.EventosV
         viewHolder.distanciaEvento.setText(distancia);
         viewHolder.lugarEvento.setText(listaEventos.get(i).getLugar());
         viewHolder.fechaEvento.setText(listaEventos.get(i).getFecha());
-
-
     }
+
+
+    ///////////////////////////////////////////////////////////////////////////////////////
+
+
+    class EventosViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
+        //Campos de cada item
+        //public ImageView imagenEvento;
+        public TextView nombreEvento;
+        public TextView distanciaEvento;
+        public TextView lugarEvento;
+        public TextView fechaEvento;
+
+        public EventosViewHolder(View itemView) {
+            super(itemView);
+            itemView.setOnClickListener(this);
+
+            //imagenEvento = (ImageView) itemView.findViewById(R.id.imagen_evento);
+            nombreEvento = (TextView) itemView.findViewById(R.id.lbl_nombre);
+            distanciaEvento = (TextView) itemView.findViewById(R.id.lbl_distancia);
+            lugarEvento = (TextView) itemView.findViewById(R.id.lbl_lugar);
+            fechaEvento = (TextView) itemView.findViewById(R.id.lbl_fecha);
+        }
+
+        @Override
+        public void onClick(View v) {
+            context.startActivity(new Intent(context, NuevoEventoActivity.class));
+        }
+    }//Termina EventosViewHolder
 
 }
