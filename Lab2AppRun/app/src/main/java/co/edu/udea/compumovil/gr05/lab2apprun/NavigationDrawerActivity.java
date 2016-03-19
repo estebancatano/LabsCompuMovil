@@ -25,21 +25,14 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 
 public class NavigationDrawerActivity extends AppCompatActivity {
-    /**
-     * Instancia del drawer
-     */
+
     private DrawerLayout drawerLayout;
     private CircleImageView circleImage;
     private TextView username;
     private TextView email;
     private View navHeader;
     private NavigationView navigationView;
-
     private DBHelper dbHelper;
-
-    /**
-     * Titulo inicial del drawer
-     */
     private String drawerTitle;
 
     @Override
@@ -55,6 +48,7 @@ public class NavigationDrawerActivity extends AppCompatActivity {
         circleImage = (CircleImageView) navHeader.findViewById(R.id.circle_image);
         username = (TextView) navHeader.findViewById(R.id.username);
         email = (TextView) navHeader.findViewById(R.id.email);
+        drawerTitle= getResources().getString(R.string.eventos_item);
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         Intent intent = getIntent();
@@ -69,21 +63,16 @@ public class NavigationDrawerActivity extends AppCompatActivity {
             username.setText(usuarioDB.getUsuario());
             email.setText(usuarioDB.getEmail());
         }
-    if(navigationView!=null)
 
-    {
-        // Añadir carácteristicas
-        setupDrawerContent(navigationView);
-    }
+        if(navigationView!=null){
+            // Añadir carácteristicas
+            setupDrawerContent(navigationView);
+        }
 
-    drawerTitle= getResources().getString(R.string.eventos_item);
-
-    if(savedInstanceState==null)
-
-    {
-        // Seleccionar item
-        selectItem(drawerTitle);
-    }
+        if(savedInstanceState==null){
+            // Seleccionar item
+            selectItem(drawerTitle);
+        }
 
 }
 

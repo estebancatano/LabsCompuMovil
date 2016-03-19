@@ -132,7 +132,7 @@ public class InicioActivity extends AppCompatActivity implements View.OnClickLis
             //Referencia la ActionBar como Toolbar
             setSupportActionBar(toolbar);
             //Atributos de la Toolbar
-            getSupportActionBar().setTitle(R.string.app_name);
+            getSupportActionBar().setTitle(R.string.title_login);
             getSupportActionBar().setIcon(R.mipmap.logo_grupo5);
         }
     }

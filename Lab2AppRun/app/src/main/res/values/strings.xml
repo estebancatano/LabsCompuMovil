@@ -46,5 +46,9 @@
         desarrollo de aplicaciones en Android referentes a la arquitectura de software, manejo del
         framework de programación Android studio y desarrollo de interfaces de usuario utilizando
         Material Design.</string>
+    
+    <!-- Toolbar titles -->
+    <string name="title_login">Inicio de sesión</string>
+    <string name="title_registro">Registro de usuario</string>
 
 </resources>
