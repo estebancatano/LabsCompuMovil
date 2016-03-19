@@ -14,4 +14,10 @@
     <!-- FragmentPerfil -->
     <dimen name="image_size">200dp</dimen>
 
+    <!-- Text -->
+    <dimen name="standar_size">25sp</dimen>
+
+    <!-- Acerca de -->
+    <dimen name="about_text_size">22sp</dimen>
+
 </resources>

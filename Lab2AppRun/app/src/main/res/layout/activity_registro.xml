@@ -1,66 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="co.edu.udea.compumovil.gr05.lab2apprun.RegistroActivity">
-
-    <android.support.v7.widget.Toolbar
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/appbar"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:minHeight="?attr/actionBarSize"
-        android:background="@color/colorPrimary"
-        android:elevation="@dimen/elevation4">
-
-    </android.support.v7.widget.Toolbar>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_margin="@dimen/margin">
-
-        <EditText
-            android:id="@+id/txt_usuario"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/regular_height"
-            android:hint="@string/usuario"
-            android:textSize="25sp"
-            android:gravity="center"
-            android:layout_marginTop="@dimen/margin"/>
+            android:layout_height="match_parent"
+            tools:context="co.edu.udea.compumovil.gr05.lab2apprun.RegistroActivity">
 
-        <EditText
-            android:id="@+id/txt_contrasena"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/regular_height"
-            android:hint="@string/contrasena"
-            android:textSize="25sp"
-            android:gravity="center"
-            android:layout_marginTop="@dimen/margin"
-            android:inputType="textPassword|textNoSuggestions"/>
+            <android.support.v7.widget.Toolbar
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/appbar"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:minHeight="?attr/actionBarSize"
+                android:background="@color/colorPrimary"
+                android:elevation="@dimen/elevation4">
 
-        <EditText
-            android:id="@+id/txt_correo"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/regular_height"
-            android:hint="@string/correo"
-            android:textSize="25sp"
-            android:gravity="center"
-            android:layout_marginTop="@dimen/margin"
-            android:layout_marginBottom="@dimen/margin"
-            android:inputType="textEmailAddress|textNoSuggestions"/>
+            </android.support.v7.widget.Toolbar>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_margin="@dimen/margin">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_margin="@dimen/margin">
 
-            <RadioGroup
+                <EditText
+                    android:id="@+id/txt_usuario"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/regular_height"
+                    android:hint="@string/usuario"
+                    android:textSize="25sp"
+                    android:gravity="center"
+                    android:layout_marginTop="@dimen/margin"/>
+
+                <EditText
+                    android:id="@+id/txt_contrasena"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/regular_height"
+                    android:hint="@string/contrasena"
+                    android:textSize="25sp"
+                    android:gravity="center"
+                    android:layout_marginTop="@dimen/margin"
+                    android:inputType="textPassword|textNoSuggestions"/>
+
+                <EditText
+                    android:id="@+id/txt_correo"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/regular_height"
+                    android:hint="@string/correo"
+                    android:textSize="25sp"
+                    android:gravity="center"
+                    android:layout_marginTop="@dimen/margin"
+                    android:layout_marginBottom="@dimen/margin"
+                    android:inputType="textEmailAddress|textNoSuggestions"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="@dimen/margin">
+
+                    <RadioGroup
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/rg_radio_group"

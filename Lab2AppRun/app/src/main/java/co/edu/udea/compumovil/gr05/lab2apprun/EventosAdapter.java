@@ -87,7 +87,7 @@ public class EventosAdapter extends RecyclerView.Adapter<EventosAdapter.EventosV
 
         @Override
         public void onClick(View v) {
-            context.startActivity(new Intent(context, NuevoEventoActivity.class));
+            context.startActivity(new Intent(context, InfoEventoActivity.class));
         }
     }//Termina EventosViewHolder
 

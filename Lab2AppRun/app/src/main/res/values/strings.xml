@@ -13,20 +13,38 @@
     <string name="usuario_registrado">El usuario ha sido registrado</string>
     <string name="foto_cargada">La imagen ha sido subida correctamente</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="usuario">USUARIO</string>
-    <string name="contrasena">CONTRASEÑA</string>
+    <string name="usuario">Usuario</string>
+    <string name="contrasena">Contraseña</string>
+    <string name="correo">Correo electrónico</string>
     <string name="entrar">ENTRAR</string>
     <string name="registrarse">REGISTRARSE</string>
-    <string name="correo">CORREO ELECTRÓNICO</string>
     <string name="guardar">GUARDAR</string>
 
-    <!-- CardView Evento -->
+    <!-- Evento -->
     <string name="nombre_evento">Nombre</string>
-    <string name="distancia_evento">Distancia</string>
+    <string name="distancia_evento">Distancia (Km)</string>
     <string name="lugar_evento">Lugar</string>
     <string name="fecha_evento">Fecha</string>
+    <string name="descripcion_evento">Descripción</string>
+    <string name="correo_evento">Correo electrónico</string>
+    <string name="telefono_evento">Teléfono</string>
+    <string name="formato_fecha">AAAA/MM/DD</string>
+    <string name="crear_evento">CREAR EVENTO</string>
+    <string name="informacion_evento">INFORMACIÓN DEL EVENTO</string>
+    <string name="contacto_evento">CONTACTO</string>
+
+    <!-- Foto galería -->
     <string name="no_foto">Sin Foto</string>
     <string name="foto_camara">Subir desde la cámara</string>
     <string name="foto_galeria">Subir desde la galeria</string>
     <string name="subir">Subir</string>
+
+    <!--Acerca de -->
+    <string name="acerca_de">El curso Computación Móvil introduce los conceptos básicos acerca del
+        diseño y desarrollo de aplicaciones móviles. En el curso se tratan temas generales de
+        computación móvil como arquitectura de dispositivos móviles y temas particulares en el
+        desarrollo de aplicaciones en Android referentes a la arquitectura de software, manejo del
+        framework de programación Android studio y desarrollo de interfaces de usuario utilizando
+        Material Design.</string>
+
 </resources>

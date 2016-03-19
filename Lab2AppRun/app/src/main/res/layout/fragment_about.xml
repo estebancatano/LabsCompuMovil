@@ -10,8 +10,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="@color/colorAccent"
-        android:text="ACERCA DE"
-        android:textSize="50sp"
+        android:text="@string/acerca_de"
+        android:textSize="@dimen/about_text_size"
         android:textColor="@color/primary_text"
         android:gravity="center"/>
 
