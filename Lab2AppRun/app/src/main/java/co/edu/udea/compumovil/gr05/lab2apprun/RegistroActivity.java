@@ -4,7 +4,6 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
-import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -16,17 +15,12 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 
 import co.edu.udea.compumovil.gr05.lab2apprun.dbapprun.DBAppRun;
 import co.edu.udea.compumovil.gr05.lab2apprun.dbapprun.DBHelper;
 import co.edu.udea.compumovil.gr05.lab2apprun.dbapprun.TableColumnsUser;
-import co.edu.udea.compumovil.gr05.lab2apprun.model.Usuario;
 
 public class RegistroActivity extends AppCompatActivity implements View.OnClickListener {
     private final static int FOTO_GALERIA = 70;
@@ -42,11 +36,6 @@ public class RegistroActivity extends AppCompatActivity implements View.OnClickL
     private RadioButton rbGaleria;
     private DBHelper dbHelper;
 
-    private String name;
-    private Uri fileUri;
-
-    private Uri mCapturedImageURI;
-
     private byte[] foto;
 
     @Override
@@ -55,10 +44,10 @@ public class RegistroActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_registro);
 
         foto = null;
-        name = Environment.getExternalStorageDirectory() + "/test.jpg";
         btnGuardar = (Button) findViewById(R.id.btn_guardar);
         btnSubir = (Button) findViewById(R.id.btn_subir);
         txtUsuario = (EditText) findViewById(R.id.txt_usuario);
+        txtUsuario.requestFocus();
         txtContrasena = (EditText) findViewById(R.id.txt_contrasena);
         txtCorreo = (EditText) findViewById(R.id.txt_correo);
         rbNoFoto = (RadioButton) findViewById(R.id.rb_no_foto);
@@ -79,7 +68,6 @@ public class RegistroActivity extends AppCompatActivity implements View.OnClickL
                 String usuario;
                 String contrasena;
                 String correo;
-                ArrayList<Usuario> listaUsuario;
                 // Extraer los datos ingresados
                 usuario = txtUsuario.getText().toString();
                 contrasena = txtContrasena.getText().toString();
@@ -174,13 +162,10 @@ public class RegistroActivity extends AppCompatActivity implements View.OnClickL
                 if (photo != null) {
                     photo.compress(Bitmap.CompressFormat.PNG, 100, stream);
                 }
-                byte[] byteArray = stream.toByteArray();
                 String mensaje = getResources().getString(R.string.foto_cargada);
                 Snackbar.make(btnSubir, mensaje, Snackbar.LENGTH_LONG).show();
             }
-
         }
-
     }
 
     private void setToolbar() {
@@ -192,7 +177,6 @@ public class RegistroActivity extends AppCompatActivity implements View.OnClickL
             //Atributos de la Toolbar
             getSupportActionBar().setTitle(R.string.title_registro);
             getSupportActionBar().setIcon(R.mipmap.logo_grupo5);
-
         }
     }
 
@@ -205,22 +189,5 @@ public class RegistroActivity extends AppCompatActivity implements View.OnClickL
             byteBuffer.write(buffer, 0, len);
         }
         return byteBuffer.toByteArray();
-    }
-
-    private File createImageFile() throws IOException {
-        // Create an image file name
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        String imageFileName = "JPEG_" + timeStamp + "_";
-        File storageDir = Environment.getExternalStoragePublicDirectory(
-                Environment.DIRECTORY_PICTURES);
-        File image = File.createTempFile(
-                imageFileName,  /* prefix */
-                ".jpg",         /* suffix */
-                storageDir      /* directory */
-        );
-
-        // Save a file: path for use with ACTION_VIEW intents
-        name = "file:" + image.getAbsolutePath();
-        return image;
     }
 }

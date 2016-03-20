@@ -34,6 +34,7 @@ public class NavigationDrawerActivity extends AppCompatActivity {
     private NavigationView navigationView;
     private DBHelper dbHelper;
     private String drawerTitle;
+    private String usuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,9 +54,8 @@ public class NavigationDrawerActivity extends AppCompatActivity {
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         Intent intent = getIntent();
         if (intent.hasExtra(InicioActivity.TAG_USUARIO)) {
-            String usuario = intent.getStringExtra(InicioActivity.TAG_USUARIO);
+            usuario = intent.getStringExtra(InicioActivity.TAG_USUARIO);
             dbHelper = new DBHelper(this);
-            boolean existe = dbHelper.consultarUsuarioRegistro(usuario);
             Usuario usuarioDB = dbHelper.consultarUsuario(usuario);
             if (usuarioDB.getFoto() != null) {
                 circleImage.setImageBitmap(BitmapFactory.decodeByteArray(usuarioDB.getFoto(), 0, usuarioDB.getFoto().length));
@@ -73,7 +73,6 @@ public class NavigationDrawerActivity extends AppCompatActivity {
             // Seleccionar item
             selectItem(drawerTitle);
         }
-
 }
 
     @Override
@@ -127,7 +126,10 @@ public class NavigationDrawerActivity extends AppCompatActivity {
                 break;
 
             case "Perfil":
+                Bundle bundle = new Bundle();
+                bundle.putString("user", usuario);
                 fragment = new PerfilFragment();
+                fragment.setArguments(bundle);
                 break;
 
             case "Acerca de":

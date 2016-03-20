@@ -15,7 +15,6 @@ import android.widget.EditText;
 import com.google.android.gms.appindexing.Action;
 
 import co.edu.udea.compumovil.gr05.lab2apprun.dbapprun.DBHelper;
-import co.edu.udea.compumovil.gr05.lab2apprun.model.Usuario;
 
 public class InicioActivity extends AppCompatActivity implements View.OnClickListener {
     private EditText txtUsuario;
@@ -26,8 +25,6 @@ public class InicioActivity extends AppCompatActivity implements View.OnClickLis
 
     public static final String TAG_USUARIO = "Usuario";
     public static final String TAG_CONTRASENA = "Contrasena";
-    public static final String TAG_CORREO = "Correo";
-    public static final String TAG_FOTO = "Foto";
     public static final String TAG_PREFERENCIAS = "PreferenciasUsuario";
     public static final String TAG_USUARIO_DEFECTO = "usuarioDefecto";
     public static int REQUEST_CODE = 5;
@@ -47,11 +44,11 @@ public class InicioActivity extends AppCompatActivity implements View.OnClickLis
             setToolbar();
 
             dbHelper = new DBHelper(this);
-            dbHelper.insertInitialDates();
 
             btnEntrar = (Button) findViewById(R.id.btn_entrar);
             btnRegistro = (Button) findViewById(R.id.btn_registro);
             txtUsuario = (EditText) findViewById(R.id.txt_usuario);
+            txtUsuario.requestFocus();
             txtContrasena = (EditText) findViewById(R.id.txt_contrasena);
             btnRegistro.setOnClickListener(this);
             btnEntrar.setOnClickListener(this);

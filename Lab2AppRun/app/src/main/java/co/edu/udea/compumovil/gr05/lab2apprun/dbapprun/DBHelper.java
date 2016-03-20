@@ -8,7 +8,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import java.util.ArrayList;
-import java.util.Vector;
 
 import co.edu.udea.compumovil.gr05.lab2apprun.model.Evento;
 import co.edu.udea.compumovil.gr05.lab2apprun.model.Usuario;
@@ -21,7 +20,6 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public DBHelper(Context context) {
         super(context, DBAppRun.DB_NAME, null, DBAppRun.DB_VERSION);
-
     }
 
     @Override
@@ -67,15 +65,6 @@ public class DBHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void insertInitialDates() {
-        ContentValues values = new ContentValues();
-        values.put(TableColumnsUser.USUARIO, "xx");
-        values.put(TableColumnsUser.CONTRASEÑA, "yy");
-        values.put(TableColumnsUser.EMAIL, "xx@a.com");
-        values.put(TableColumnsUser.FOTO, (byte[]) null);
-        insertar(DBAppRun.TABLE_USERS, values);
-    }
-
     public void insertar(String tabla, ContentValues valores) {
         SQLiteDatabase db = this.getWritableDatabase();
         // Se guarda la fila en la base de datos
@@ -98,7 +87,7 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = null;
         try {
             db = this.getWritableDatabase();
-            Cursor c = db.query(DBAppRun.TABLE_USERS, campos, null, null, null, null, null);
+            Cursor c = db.query(DBAppRun.TABLE_EVENTS, campos, null, null, null, null, null);
             //Nos aseguramos de que existe al menos un registro
             if (c.moveToFirst()) {
                 //Recorremos el cursor hasta que no haya más registros
@@ -130,13 +119,10 @@ public class DBHelper extends SQLiteOpenHelper {
         String[] campos = new String[]{TableColumnsUser.EMAIL, TableColumnsUser.FOTO};
         String[] argumentos = new String[]{user};
         String consulta = TableColumnsUser.USUARIO + "=?";
-        //String sql = String.format("SELECT %s, %s FROM %s WHERE %s = %s", TableColumnsUser.EMAIL,
-        //        TableColumnsUser.FOTO, DBAppRun.TABLE_USERS, TableColumnsUser.USUARIO,user);
         SQLiteDatabase db = this.getWritableDatabase();
         Usuario usuario = null;
         try {
             Cursor c = db.query(DBAppRun.TABLE_USERS, campos, consulta, argumentos, null, null, null);
-            //Cursor c = db.rawQuery(sql,null);
             //Nos aseguramos de que existe al menos {un registro
             if (c.moveToFirst()) {
                 //Recorremos el cursor hasta que no haya más registros
