@@ -7,12 +7,12 @@
 
 
     <ImageView
+        android:id="@+id/iv_usuario"
         android:layout_marginTop="60dp"
         android:layout_width="@dimen/image_size"
         android:layout_height="@dimen/image_size"
         android:layout_gravity="center"
-        android:id="@+id/imageView"
-        android:background="@color/colorAccent"/>
+        android:background="@drawable/profile_runner"/>
 
     <TextView
         android:id="@+id/lbl_nombre_usuario"

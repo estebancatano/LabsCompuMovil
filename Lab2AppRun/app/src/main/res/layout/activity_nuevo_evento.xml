@@ -54,17 +54,6 @@
                 android:inputType="textCapWords|textNoSuggestions"/>
 
             <EditText
-                android:id="@+id/txt_descripcion"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/regular_height"
-                android:hint="@string/descripcion_evento"
-                android:textSize="@dimen/standar_size"
-                android:gravity="center"
-                android:layout_marginTop="@dimen/margin"
-                android:imeOptions="actionNext"
-                android:inputType="textMultiLine|textNoSuggestions"/>
-
-            <EditText
                 android:id="@+id/txt_distancia"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/regular_height"
@@ -96,6 +85,58 @@
                 android:gravity="center"
                 android:layout_marginTop="@dimen/margin"
                 android:editable="false"/>
+
+            <EditText
+                android:id="@+id/txt_descripcion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/descripcion_evento"
+                android:textSize="@dimen/standar_size"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/margin"
+                android:imeOptions="actionNext"
+                android:inputType="textMultiLine"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="@dimen/margin">
+
+                <RadioGroup
+                    android:layout_width="@dimen/none"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:id="@+id/rg_radio_group"
+                    android:checkedButton="@+id/rb_no_foto">
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/no_foto"
+                        android:id="@+id/rb_no_foto" />
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/foto_camara"
+                        android:id="@+id/rb_camara" />
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/foto_galeria"
+                        android:id="@+id/rb_galeria" />
+                </RadioGroup>
+                <Button
+                    android:id="@+id/btn_subir"
+                    android:layout_width="@dimen/none"
+                    android:layout_height="@dimen/regular_height"
+                    android:layout_weight="2"
+                    android:text="@string/subir"
+                    android:textSize="@dimen/standar_size"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="@dimen/margin"
+                    android:background="@color/colorAccent"
+                    android:elevation="@dimen/elevation4"/>
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/lbl_contacto_evento"
@@ -136,13 +177,13 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="@dimen/none"
         android:layout_weight="1"
         android:orientation="vertical"
         android:layout_margin="@dimen/margin">
 
         <Button
-            android:id="@+id/btn_guardar"
+            android:id="@+id/btn_crear_evento"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="@string/crear_evento"

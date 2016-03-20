@@ -20,7 +20,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="@dimen/none"
+        android:layout_weight="1"
         android:orientation="vertical"
         android:layout_margin="@dimen/margin">
 
@@ -48,7 +49,14 @@
             android:imeOptions="actionDone"
             android:inputType="textPassword"/>
 
+    </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/none"
+        android:layout_weight="2"
+        android:orientation="vertical"
+        android:layout_margin="@dimen/margin">
         <Button
             android:id="@+id/btn_entrar"
             android:layout_width="match_parent"
@@ -72,4 +80,5 @@
             android:elevation="@dimen/elevation4"/>
 
     </LinearLayout>
+
 </LinearLayout>

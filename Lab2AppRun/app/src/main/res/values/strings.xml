@@ -7,12 +7,16 @@
     <string name="acercade_item">Acerca de</string>
     <string name="cerra_sesion_item">Cerrar sesión</string>
     <string name="configuracion_item">Configuración</string>
+
+    <!-- Mensajes de notificación -->
     <string name="no_texto">No ha ingresado ningún dato para el campo</string>
     <string name="existe_usuario">El usuario ingresado ya existe en la base de datos</string>
     <string name="no_usuario">El usuario o la contraseña ingresada son incorrectos</string>
     <string name="usuario_registrado">El usuario ha sido registrado</string>
+    <string name="evento_creado">El evento ha sido creado. Por favor actualice la vista</string>
     <string name="foto_cargada">La imagen ha sido subida correctamente</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Inicio de sesión -->
     <string name="usuario">Usuario</string>
     <string name="contrasena">Contraseña</string>
     <string name="correo">Correo electrónico</string>
@@ -50,5 +54,7 @@
     <!-- Toolbar titles -->
     <string name="title_login">Inicio de sesión</string>
     <string name="title_registro">Registro de usuario</string>
+    <string name="title_nuevo_evento">Nuevo evento</string>
+    <string name="title_info_evento">Información del evento</string>
 
 </resources>

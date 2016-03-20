@@ -3,9 +3,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="150dp"
-    card_view:cardCornerRadius="4dp"
-    card_view:cardElevation="4dp"
+    android:layout_height="@dimen/height_card"
+    card_view:cardCornerRadius="@dimen/elevation4"
+    card_view:cardElevation="@dimen/elevation4"
     card_view:cardUseCompatPadding="true">
 
     <RelativeLayout
@@ -17,7 +17,7 @@
             android:layout_width="100dp"
             android:layout_height="150dp"
             android:scaleType="centerCrop"
-            android:background="#aaaaaa"/>
+            android:background="@drawable/profile_runner"/>
 
         <TextView
             android:id="@+id/lbl_nombre"
@@ -37,7 +37,6 @@
             android:id="@+id/linea"
             android:layout_below="@+id/lbl_nombre"
             android:layout_toRightOf="@+id/imagen_evento">
-
         </View>
 
         <TextView
@@ -72,7 +71,5 @@
             android:layout_toRightOf="@+id/imagen_evento"
             android:layout_alignLeft="@id/lbl_nombre"
             android:layout_marginTop="10dp"/>
-
-
     </RelativeLayout>
 </android.support.v7.widget.CardView>
