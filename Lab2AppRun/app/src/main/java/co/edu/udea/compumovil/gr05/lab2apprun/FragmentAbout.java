@@ -11,13 +11,11 @@ import android.view.ViewGroup;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class AboutFragment extends Fragment {
+public class FragmentAbout extends Fragment {
 
-
-    public AboutFragment() {
+    public FragmentAbout() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -25,5 +23,4 @@ public class AboutFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_about, container, false);
     }
-
 }

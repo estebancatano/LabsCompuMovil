@@ -20,7 +20,7 @@ import co.edu.udea.compumovil.gr05.lab2apprun.model.Evento;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class EventosFragment extends Fragment implements View.OnClickListener{
+public class FragmentCarreras extends Fragment implements View.OnClickListener{
 
     private RecyclerView recycler;
     private RecyclerView.Adapter adapter;
@@ -28,7 +28,7 @@ public class EventosFragment extends Fragment implements View.OnClickListener{
     private ImageButton fab;
     private DBHelper dbHelper;
 
-    public EventosFragment() {
+    public FragmentCarreras() {
         // Required empty public constructor
     }
 
@@ -36,11 +36,11 @@ public class EventosFragment extends Fragment implements View.OnClickListener{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_eventos, container, false);
+        View view = inflater.inflate(R.layout.fragment_carreras, container, false);
         dbHelper = new DBHelper(getContext());
 
-        List<Evento> listaEventos;
-        listaEventos = dbHelper.consultarCarreras();
+        List<Evento> listaCarreras;
+        listaCarreras = dbHelper.consultarCarreras();
 
         // Obtener el Recycler
         recycler = (RecyclerView) view.findViewById(R.id.reciclador);
@@ -51,10 +51,11 @@ public class EventosFragment extends Fragment implements View.OnClickListener{
         recycler.setLayoutManager(layoutManager);
 
         // Crear un nuevo adaptador
-        adapter = new EventosAdapter(getContext(),listaEventos);
+        adapter = new AdapterCarreras(getContext(),listaCarreras);
         adapter.notifyDataSetChanged();
         recycler.setAdapter(adapter);
 
+        // Obtener el botón flotante
         fab = (ImageButton) view.findViewById(R.id.fab);
         fab.setOnClickListener(this);
 
@@ -66,7 +67,7 @@ public class EventosFragment extends Fragment implements View.OnClickListener{
         Intent intent;
         switch (v.getId()){
             case R.id.fab:
-                intent = new Intent(getActivity(),NuevoEventoActivity.class);
+                intent = new Intent(getActivity(),ActivityNuevaCarrera.class);
                 getActivity().startActivity(intent);
                 break;
         }

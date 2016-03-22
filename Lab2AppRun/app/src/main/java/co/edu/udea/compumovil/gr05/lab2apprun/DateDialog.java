@@ -24,13 +24,11 @@ public class DateDialog extends DialogFragment implements DatePickerDialog.OnDat
 
         // Create a new instance of DatePickerDialog and return it
         return new DatePickerDialog(getActivity(), this, year, month, day);
-
     }
 
     // Callback to DatePickerActivity.onDateSet() to update the UI
     @Override
     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-
         ((DatePickerDialog.OnDateSetListener) getActivity()).onDateSet(view, year, monthOfYear, dayOfMonth);
     }
 }

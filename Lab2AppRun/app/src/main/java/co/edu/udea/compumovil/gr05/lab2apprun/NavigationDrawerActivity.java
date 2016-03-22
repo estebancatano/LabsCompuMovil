@@ -28,8 +28,8 @@ public class NavigationDrawerActivity extends AppCompatActivity {
 
     private DrawerLayout drawerLayout;
     private CircleImageView circleImage;
-    private TextView username;
-    private TextView email;
+    private TextView lblUsuario;
+    private TextView lblCorreo;
     private View navHeader;
     private NavigationView navigationView;
     private DBHelper dbHelper;
@@ -47,21 +47,24 @@ public class NavigationDrawerActivity extends AppCompatActivity {
         navigationView = (NavigationView) drawerLayout.getChildAt(1);
         navHeader = navigationView.getHeaderView(0);
         circleImage = (CircleImageView) navHeader.findViewById(R.id.circle_image);
-        username = (TextView) navHeader.findViewById(R.id.username);
-        email = (TextView) navHeader.findViewById(R.id.email);
-        drawerTitle= getResources().getString(R.string.eventos_item);
+        lblUsuario = (TextView) navHeader.findViewById(R.id.username);
+        lblCorreo = (TextView) navHeader.findViewById(R.id.email);
+        drawerTitle= getResources().getString(R.string.carreras_item);
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         Intent intent = getIntent();
-        if (intent.hasExtra(InicioActivity.TAG_USUARIO)) {
-            usuario = intent.getStringExtra(InicioActivity.TAG_USUARIO);
+        if (intent.hasExtra(ActivityLogin.TAG_USUARIO)) {
+            usuario = intent.getStringExtra(ActivityLogin.TAG_USUARIO);
             dbHelper = new DBHelper(this);
             Usuario usuarioDB = dbHelper.consultarUsuario(usuario);
+
+            // Colocar valores en NavHeader
             if (usuarioDB.getFoto() != null) {
-                circleImage.setImageBitmap(BitmapFactory.decodeByteArray(usuarioDB.getFoto(), 0, usuarioDB.getFoto().length));
+                circleImage.setImageBitmap(BitmapFactory.decodeByteArray(usuarioDB.getFoto(), 0,
+                        usuarioDB.getFoto().length));
             }
-            username.setText(usuarioDB.getUsuario());
-            email.setText(usuarioDB.getEmail());
+            lblUsuario.setText(usuarioDB.getUsuario());
+            lblCorreo.setText(usuarioDB.getEmail());
         }
 
         if(navigationView!=null){
@@ -85,7 +88,6 @@ public class NavigationDrawerActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
     private void setToolbar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -98,7 +100,6 @@ public class NavigationDrawerActivity extends AppCompatActivity {
         }
     }
 
-
     private void setupDrawerContent(NavigationView navigationView) {
         navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
@@ -108,7 +109,7 @@ public class NavigationDrawerActivity extends AppCompatActivity {
                         // Marcar item presionado
                         menuItem.setChecked(true);
                         // Crear nuevo fragmento
-                        String title = menuItem.getTitle().toString();
+                        String title = menuItem.toString();
                         selectItem(title);
                         return true;
                     }
@@ -121,26 +122,26 @@ public class NavigationDrawerActivity extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         Fragment fragment = null;
         switch (title) {
-            case "Eventos":
-                fragment = new EventosFragment();
+            case "Carreras":
+                fragment = new FragmentCarreras();
                 break;
 
             case "Perfil":
                 Bundle bundle = new Bundle();
-                bundle.putString("user", usuario);
-                fragment = new PerfilFragment();
+                bundle.putString(FragmentPerfil.TAG_USER, usuario);
+                fragment = new FragmentPerfil();
                 fragment.setArguments(bundle);
                 break;
 
             case "Acerca de":
-                fragment = new AboutFragment();
+                fragment = new FragmentAbout();
                 break;
 
             case "Cerrar sesión":
-                SharedPreferences preferencias = getSharedPreferences(InicioActivity.TAG_PREFERENCIAS, Context.MODE_PRIVATE);
+                SharedPreferences preferencias = getSharedPreferences(ActivityLogin.TAG_PREFERENCIAS, Context.MODE_PRIVATE);
                 preferencias.edit().clear().commit();
                 finish();
-                Intent intent = new Intent(this, InicioActivity.class);
+                Intent intent = new Intent(this, ActivityLogin.class);
                 startActivity(intent);
                 break;
         }
