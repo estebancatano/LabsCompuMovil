@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:fab="http://schemas.android.com/apk/res-auto"
     android:padding="@dimen/margin"
-    tools:context=".EventosFragment">
+    tools:context=".FragmentCarreras">
 
         <android.support.v7.widget.RecyclerView
             xmlns:android="http://schemas.android.com/apk/res/android"
@@ -21,7 +21,10 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:src="@mipmap/ic_add"
-        fab:rippleColor="@color/colorAccent"
+        fab:fab_colorNormal="@color/colorAccent"
+        fab:rippleColor="@color/colorPrimaryDark"
+        fab:fab_colorPressed="@color/colorPrimary"
+        fab:fab_shadow="true"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:elevation="@dimen/elevation4"/>

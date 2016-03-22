@@ -4,20 +4,20 @@
     <group android:checkableBehavior="single">
 
         <item
-            android:id="@+id/nav_eventos"
-            android:title="@string/eventos_item"
+            android:id="@+id/item_carreras"
+            android:title="@string/carreras_item"
             android:checked="true"
             android:icon="@drawable/ic_calendar"/>
 
 
         <item
-            android:id="@+id/nav_perfil"
+            android:id="@+id/item_perfil"
             android:title="@string/perfil_item"
             android:icon="@drawable/ic_profile"/>
 
         <item
-            android:id="@+id/nav_acercade"
-            android:title="@string/acercade_item"
+            android:id="@+id/item_about"
+            android:title="@string/about_item"
             android:icon="@drawable/ic_info"/>
 
 
@@ -27,8 +27,8 @@
             android:title="@string/configuracion_item">
             <menu>
                  <item
-                   android:id="@+id/nav_cerrar_sesion"
-                   android:title="@string/cerra_sesion_item"
+                   android:id="@+id/item_logut"
+                   android:title="@string/logout_item"
                    android:icon="@drawable/ic_logout"/>
             </menu>
         </item>

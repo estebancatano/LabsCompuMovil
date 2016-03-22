@@ -3,9 +3,9 @@
 
     <!-- Items NavDrawer -->
     <string name="perfil_item">Perfil</string>
-    <string name="eventos_item">Eventos</string>
-    <string name="acercade_item">Acerca de</string>
-    <string name="cerra_sesion_item">Cerrar sesión</string>
+    <string name="carreras_item">Carreras</string>
+    <string name="about_item">Acerca de</string>
+    <string name="logout_item">Cerrar sesión</string>
     <string name="configuracion_item">Configuración</string>
 
     <!-- Mensajes de notificación -->
@@ -13,7 +13,7 @@
     <string name="existe_usuario">El usuario ingresado ya existe en la base de datos</string>
     <string name="no_usuario">El usuario o la contraseña ingresada son incorrectos</string>
     <string name="usuario_registrado">El usuario ha sido registrado</string>
-    <string name="evento_creado">El evento ha sido creado. Por favor actualice la vista</string>
+    <string name="carrera_creada">La carrera ha sido creada. Por favor actualice la vista</string>
     <string name="foto_cargada">La imagen ha sido subida correctamente</string>
 
     <!-- Inicio de sesión -->
@@ -22,20 +22,22 @@
     <string name="correo">Correo electrónico</string>
     <string name="entrar">ENTRAR</string>
     <string name="registrarse">REGISTRARSE</string>
-    <string name="guardar">GUARDAR</string>
 
-    <!-- Evento -->
-    <string name="nombre_evento">Nombre</string>
-    <string name="distancia_evento">Distancia (Km)</string>
-    <string name="lugar_evento">Lugar</string>
-    <string name="fecha_evento">Fecha</string>
-    <string name="descripcion_evento">Descripción</string>
-    <string name="correo_evento">Correo electrónico</string>
-    <string name="telefono_evento">Teléfono</string>
+    <!-- Carrera -->
+    <string name="nombre_carrera">Nombre</string>
+    <string name="distancia_carrera">Distancia (Km)</string>
+    <string name="lugar_carrera">Lugar</string>
+    <string name="fecha_carrera">Fecha</string>
+    <string name="descripcion_carrera">Descripción</string>
+    <string name="correo_carrera">Correo electrónico</string>
+    <string name="telefono_carrera">Teléfono</string>
     <string name="formato_fecha">AAAA/MM/DD</string>
-    <string name="crear_evento">CREAR EVENTO</string>
-    <string name="informacion_evento">INFORMACIÓN DEL EVENTO</string>
-    <string name="contacto_evento">CONTACTO</string>
+    <string name="crear_carrera">CREAR CARRERA</string>
+    <string name="informacion_carrera">INFORMACIÓN DE LA CARRERA</string>
+    <string name="contacto_carrera">CONTACTO</string>
+    <string name="sin_info">Sin información</string>
+    <string name="fecha_no_valida">La fecha ingresada no es válida</string>
+    <string name="correo_no_valido">El correo ingresado no es válido</string>
 
     <!-- Foto galería -->
     <string name="no_foto">Sin Foto</string>
@@ -54,7 +56,7 @@
     <!-- Toolbar titles -->
     <string name="title_login">Inicio de sesión</string>
     <string name="title_registro">Registro de usuario</string>
-    <string name="title_nuevo_evento">Nuevo evento</string>
-    <string name="title_info_evento">Información del evento</string>
+    <string name="title_nueva_carrera">Nueva carrera</string>
+    <string name="title_info_evento">Información de la carrera</string>
 
 </resources>

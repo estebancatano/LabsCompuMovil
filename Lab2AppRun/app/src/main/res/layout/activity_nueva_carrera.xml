@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
+    android:id="@+id/nuevo_evento"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="co.edu.udea.compumovil.gr05.lab2apprun.NuevoEventoActivity">
+    tools:context=".ActivityNuevaCarrera">
 
     <android.support.v7.widget.Toolbar
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -35,17 +36,17 @@
                 android:id="@+id/lbl_informacion_evento"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/informacion_evento"
+                android:text="@string/informacion_carrera"
                 android:textColor="@color/primary_text"
                 android:textStyle="bold"
                 android:textSize="@dimen/standar_size"
                 android:gravity="center"/>
 
             <EditText
-                android:id="@+id/txt_nombre_evento"
+                android:id="@+id/txt_nombre_carrera"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/regular_height"
-                android:hint="@string/nombre_evento"
+                android:hint="@string/nombre_carrera"
                 android:textSize="@dimen/standar_size"
                 android:gravity="center"
                 android:layout_marginTop="@dimen/margin"
@@ -57,7 +58,7 @@
                 android:id="@+id/txt_distancia"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/regular_height"
-                android:hint="@string/distancia_evento"
+                android:hint="@string/distancia_carrera"
                 android:textSize="@dimen/standar_size"
                 android:gravity="center"
                 android:layout_marginTop="@dimen/margin"
@@ -68,7 +69,7 @@
                 android:id="@+id/txt_lugar"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/regular_height"
-                android:hint="@string/lugar_evento"
+                android:hint="@string/lugar_carrera"
                 android:textSize="@dimen/standar_size"
                 android:gravity="center"
                 android:layout_marginTop="@dimen/margin"
@@ -77,7 +78,7 @@
                 android:inputType="textCapWords|textNoSuggestions"/>
 
             <EditText
-                android:id="@+id/txt_fecha_Evento"
+                android:id="@+id/txt_fecha_carrera"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/formato_fecha"
@@ -90,7 +91,7 @@
                 android:id="@+id/txt_descripcion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/descripcion_evento"
+                android:hint="@string/descripcion_carrera"
                 android:textSize="@dimen/standar_size"
                 android:gravity="center"
                 android:layout_marginTop="@dimen/margin"
@@ -139,10 +140,10 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/lbl_contacto_evento"
+                android:id="@+id/lbl_contacto_carrera"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/contacto_evento"
+                android:text="@string/contacto_carrera"
                 android:textColor="@color/primary_text"
                 android:textStyle="bold"
                 android:textSize="@dimen/standar_size"
@@ -150,10 +151,10 @@
                 android:layout_marginTop="@dimen/margin"/>
 
             <EditText
-                android:id="@+id/txt_telefono_evento"
+                android:id="@+id/txt_telefono_carrera"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/regular_height"
-                android:hint="@string/telefono_evento"
+                android:hint="@string/telefono_carrera"
                 android:textSize="@dimen/standar_size"
                 android:gravity="center"
                 android:layout_marginTop="@dimen/margin"
@@ -161,18 +162,15 @@
                 android:inputType="number|textNoSuggestions"/>
 
             <EditText
-                android:id="@+id/txt_correo_evento"
+                android:id="@+id/txt_correo_carrera"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/regular_height"
-                android:hint="@string/correo_evento"
+                android:hint="@string/correo_carrera"
                 android:textSize="@dimen/standar_size"
                 android:gravity="center"
                 android:layout_marginTop="@dimen/margin"
                 android:inputType="textEmailAddress|textNoSuggestions"/>
-
-
         </LinearLayout>
-
     </ScrollView>
 
     <LinearLayout
@@ -183,15 +181,13 @@
         android:layout_margin="@dimen/margin">
 
         <Button
-            android:id="@+id/btn_crear_evento"
+            android:id="@+id/btn_crear_carrera"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@string/crear_evento"
+            android:text="@string/crear_carrera"
             android:textSize="@dimen/standar_size"
             android:layout_gravity="center"
             android:background="@color/colorAccent"
             android:elevation="@dimen/elevation4"/>
-
     </LinearLayout>
-
 </LinearLayout>

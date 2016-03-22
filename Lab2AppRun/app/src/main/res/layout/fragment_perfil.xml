@@ -3,7 +3,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="co.edu.udea.compumovil.gr05.lab2apprun.PerfilFragment">
+    tools:context=".FragmentPerfil">
 
 
     <ImageView
@@ -11,6 +11,7 @@
         android:layout_marginTop="60dp"
         android:layout_width="@dimen/image_size"
         android:layout_height="@dimen/image_size"
+        android:scaleType="centerCrop"
         android:layout_gravity="center"
         android:background="@drawable/profile_runner"/>
 

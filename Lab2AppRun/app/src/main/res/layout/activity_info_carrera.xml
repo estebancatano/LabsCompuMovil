@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ActivityInfoCarrera">
+
+    <android.support.v7.widget.Toolbar
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/appbar"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:minHeight="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:elevation="@dimen/elevation4">
+
+    </android.support.v7.widget.Toolbar>
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="7"
+        android:padding="@dimen/margin"
+        android:layout_gravity="end">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/informacion_carrera"
+                android:textColor="@color/primary_text"
+                android:textStyle="bold"
+                android:textSize="@dimen/standar_size"
+                android:gravity="center"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/nombre_carrera"
+                android:textColor="@color/primary_text"
+                android:textSize="@dimen/standar_size"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/margin"/>
+
+            <TextView
+                android:id="@+id/lbl_nombre_carrera"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_data"
+                android:hint="@string/sin_info"
+                android:textSize="@dimen/standar_size"
+                android:gravity="center"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/distancia_carrera"
+                android:textColor="@color/primary_text"
+                android:textSize="@dimen/standar_size"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/margin"/>
+
+            <TextView
+                android:id="@+id/lbl_distancia_carrera"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_data"
+                android:hint="@string/sin_info"
+                android:textSize="@dimen/standar_size"
+                android:gravity="center"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/lugar_carrera"
+                android:textColor="@color/primary_text"
+                android:textSize="@dimen/standar_size"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/margin"/>
+
+            <TextView
+                android:id="@+id/lbl_lugar_carrera"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_data"
+                android:hint="@string/sin_info"
+                android:textSize="@dimen/standar_size"
+                android:gravity="center"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/fecha_carrera"
+                android:textColor="@color/primary_text"
+                android:textSize="@dimen/standar_size"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/margin"/>
+
+            <TextView
+                android:id="@+id/lbl_fecha_carrera"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_data"
+                android:hint="@string/sin_info"
+                android:textSize="@dimen/standar_size"
+                android:gravity="center"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/descripcion_carrera"
+                android:textColor="@color/primary_text"
+                android:textSize="@dimen/standar_size"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/margin"/>
+
+            <TextView
+                android:id="@+id/lbl_descripcion_carrera"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_data"
+                android:hint="@string/sin_info"
+                android:textSize="@dimen/standar_size"
+                android:gravity="center"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/regular_height"
+                android:text="@string/contacto_carrera"
+                android:textColor="@color/primary_text"
+                android:textStyle="bold"
+                android:textSize="@dimen/standar_size"
+                android:gravity="center"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/telefono_carrera"
+                android:textColor="@color/primary_text"
+                android:textSize="@dimen/standar_size"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/margin"/>
+
+            <TextView
+                android:id="@+id/lbl_telefono_carrera"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_data"
+                android:hint="@string/sin_info"
+                android:textSize="@dimen/standar_size"
+                android:gravity="center"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/correo_carrera"
+                android:textColor="@color/primary_text"
+                android:textSize="@dimen/standar_size"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/margin"/>
+
+            <TextView
+                android:id="@+id/lbl_correo_carrera"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_data"
+                android:hint="@string/sin_info"
+                android:textSize="@dimen/standar_size"
+                android:gravity="center"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
