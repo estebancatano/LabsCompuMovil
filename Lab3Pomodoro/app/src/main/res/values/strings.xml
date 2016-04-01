@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Lab3 - Pomodoro</string>
+    <string name="pomodoro">Pomodoro</string>
+    <string name="configuracion">Configuración</string>
+
+    <!-- MainActivity-->
+    <string name="time_text">00:00</string>
+    <string name="iniciar">INICIAR</string>
+    <string name="reiniciar">REINICIAR</string>
+
+    <!-- ConfiguracionActivity -->
+    <string name="volumen">Volumen</string>
+    <string name="vibracion">Vibración</string>
+    <string name="apagado">Apagado</string>
+    <string name="corto">Corto</string>
+    <string name="largo">Largo</string>
+    <string name="short_break">Short break</string>
+    <string name="long_break">Long break</string>
+    <string name="tres_min">3 min</string>
+    <string name="seis_min">6 min</string>
+    <string name="diez_min">10 min</string>
+    <string name="quince_min">15 min</string>
+    <string name="veinte_min">20 min</string>
+</resources>
+

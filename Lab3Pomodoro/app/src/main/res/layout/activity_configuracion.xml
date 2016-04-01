@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/margin"
+    android:orientation="vertical"
+    tools:context="co.edu.udea.compumovil.gr05.lab3pomodoro.ConfiguracionActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- VOLUMEN -->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/volumen"
+                android:textStyle="bold"
+                android:textSize="@dimen/text_size_subtitle"/>
+
+            <SeekBar
+                android:id="@+id/seekBar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_seekbar"
+                android:layout_marginTop="@dimen/margin"/>
+
+            <!-- VIBRACIÓN -->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/vibracion"
+                android:textStyle="bold"
+                android:textSize="@dimen/text_size_subtitle"
+                android:layout_marginTop="@dimen/margin"/>
+
+            <RadioGroup
+                android:id="@+id/rg_vibracion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <RadioButton
+                    android:id="@+id/rb_apagado"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:text="@string/apagado"
+                    android:textSize="@dimen/standar_size"/>
+
+                <RadioButton
+                    android:id="@+id/rb_corto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:text="@string/corto"
+                    android:textSize="@dimen/standar_size"/>
+
+                <RadioButton
+                    android:id="@+id/rb_largo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:text="@string/largo"
+                    android:textSize="@dimen/standar_size"/>
+            </RadioGroup>
+
+            <!-- SHORT BREAK -->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/short_break"
+                android:textStyle="bold"
+                android:textSize="@dimen/text_size_subtitle"
+                android:layout_marginTop="@dimen/margin"/>
+
+            <RadioGroup
+                android:id="@+id/rg_short_break"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <RadioButton
+                    android:id="@+id/rb_tres_min"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:text="@string/tres_min"
+                    android:textSize="@dimen/standar_size"/>
+
+                <RadioButton
+                    android:id="@+id/rb_seis_min"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:text="@string/seis_min"
+                    android:textSize="@dimen/standar_size"/>
+            </RadioGroup>
+
+            <!-- LONG BREAK-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/long_break"
+                android:textStyle="bold"
+                android:textSize="@dimen/text_size_subtitle"
+                android:layout_marginTop="@dimen/margin"/>
+
+            <RadioGroup
+                android:id="@+id/rg_long_break"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <RadioButton
+                    android:id="@+id/rb_diez_min"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:text="@string/diez_min"
+                    android:textSize="@dimen/standar_size"/>
+
+                <RadioButton
+                    android:id="@+id/rb_quince_min"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:text="@string/quince_min"
+                    android:textSize="@dimen/standar_size"/>
+
+                <RadioButton
+                    android:id="@+id/rb_veinte_min"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:text="@string/veinte_min"
+                    android:textSize="@dimen/standar_size"/>
+            </RadioGroup>
+
+        </LinearLayout>
+
+
+
+    </ScrollView>
+
+
+
+</LinearLayout>
