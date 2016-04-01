@@ -76,6 +76,14 @@ public class NavigationDrawerActivity extends AppCompatActivity {
             // Seleccionar item
             selectItem(drawerTitle);
         }
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        Fragment fragment = new FragmentCarreras();
+        if (fragment != null) {
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.contenido_principal, fragment);
+            fragmentTransaction.commit();
+        }
 }
 
     @Override
