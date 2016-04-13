@@ -19,6 +19,7 @@
             <!-- VOLUMEN -->
 
             <TextView
+                android:id="@+id/lbl_volumen"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/volumen"
@@ -55,7 +56,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
                     android:text="@string/apagado"
-                    android:textSize="@dimen/standar_size"/>
+                    android:textSize="@dimen/standar_size"
+                    android:checked="true"/>
 
                 <RadioButton
                     android:id="@+id/rb_corto"
@@ -98,7 +100,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
                     android:text="@string/tres_min"
-                    android:textSize="@dimen/standar_size"/>
+                    android:textSize="@dimen/standar_size"
+                    android:checked="true"/>
 
                 <RadioButton
                     android:id="@+id/rb_seis_min"
@@ -132,7 +135,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
                     android:text="@string/diez_min"
-                    android:textSize="@dimen/standar_size"/>
+                    android:textSize="@dimen/standar_size"
+                    android:checked="true"/>
 
                 <RadioButton
                     android:id="@+id/rb_quince_min"

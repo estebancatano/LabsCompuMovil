@@ -9,7 +9,7 @@
     tools:context="co.edu.udea.compumovil.gr05.lab3pomodoro.MainActivity">
 
     <TextView
-        android:id="@+id/lbl_tiempo"
+        android:id="@+id/lbl_contador"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="2"
