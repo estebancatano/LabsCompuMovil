@@ -17,9 +17,13 @@
     <string name="short_break">Short break</string>
     <string name="long_break">Long break</string>
     <string name="tres_min">3 min</string>
+    <string name="cuatro_min">4 min</string>
+    <string name="cinco_min">5 min</string>
     <string name="seis_min">6 min</string>
     <string name="diez_min">10 min</string>
     <string name="quince_min">15 min</string>
     <string name="veinte_min">20 min</string>
+    <string name="debug_mode">Modo Debug</string>
+
 </resources>
 

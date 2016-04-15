@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -33,7 +34,6 @@
                 android:layout_marginTop="@dimen/margin"/>
 
             <!-- VIBRACIÓN -->
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -56,8 +56,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
                     android:text="@string/apagado"
-                    android:textSize="@dimen/standar_size"
-                    android:checked="true"/>
+                    android:textSize="@dimen/standar_size"/>
 
                 <RadioButton
                     android:id="@+id/rb_corto"
@@ -100,9 +99,21 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
                     android:text="@string/tres_min"
-                    android:textSize="@dimen/standar_size"
-                    android:checked="true"/>
-
+                    android:textSize="@dimen/standar_size"/>
+                <RadioButton
+                    android:id="@+id/rb_cuatro_min"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:text="@string/cuatro_min"
+                    android:textSize="@dimen/standar_size"/>
+                <RadioButton
+                    android:id="@+id/rb_cinco_min"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:text="@string/cinco_min"
+                    android:textSize="@dimen/standar_size"/>
                 <RadioButton
                     android:id="@+id/rb_seis_min"
                     android:layout_width="wrap_content"
@@ -135,8 +146,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
                     android:text="@string/diez_min"
-                    android:textSize="@dimen/standar_size"
-                    android:checked="true"/>
+                    android:textSize="@dimen/standar_size"/>
 
                 <RadioButton
                     android:id="@+id/rb_quince_min"
@@ -154,6 +164,16 @@
                     android:text="@string/veinte_min"
                     android:textSize="@dimen/standar_size"/>
             </RadioGroup>
+            <!-- MODO DEBUG-->
+            <CheckBox
+                android:id="@+id/cb_debug"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/debug_mode"
+                android:textSize="@dimen/standar_size"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/margin"/>
+
 
         </LinearLayout>
 

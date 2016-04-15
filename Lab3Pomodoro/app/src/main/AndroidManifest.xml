@@ -15,8 +15,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ConfiguracionActivity"
-            android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".ConfiguracionActivity"
+            android:parentActivityName=".MainActivity" />
+
+        <service
+            android:name=".CounterService"
+            android:exported="true"
+            android:enabled="true"/>
     </application>
 
 </manifest>
