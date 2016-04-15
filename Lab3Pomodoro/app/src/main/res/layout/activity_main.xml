@@ -9,6 +9,15 @@
     tools:context="co.edu.udea.compumovil.gr05.lab3pomodoro.MainActivity">
 
     <TextView
+        android:id="@+id/lbl_actividad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/margin"
+        android:textSize="@dimen/standar_size"
+        android:text="@string/tomate"/>
+
+    <TextView
         android:id="@+id/lbl_contador"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -23,7 +32,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/height_button"
         android:layout_weight="1"
-        android:background="@color/accent"
+        android:background="@color/green_button"
         android:textSize="@dimen/text_size_button"
         android:text="@string/iniciar"/>
 
@@ -33,7 +42,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/height_button"
         android:layout_weight="1"
-        android:background="@color/accent"
+        android:background="@color/red_button"
         android:textSize="@dimen/text_size_button"
         android:text="@string/reiniciar"/>
 
