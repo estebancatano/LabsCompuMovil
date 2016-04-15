@@ -1,8 +1,10 @@
 package co.edu.udea.compumovil.gr05.lab3pomodoro;
 
 import android.app.IntentService;
+import android.app.NotificationManager;
 import android.content.Intent;
 import android.support.v4.content.LocalBroadcastManager;
+import android.support.v4.app.NotificationCompat;
 
 
 /**
@@ -20,6 +22,7 @@ public class CounterService extends IntentService {
     public static final String TAG_ESTADO_TIEMPO = "ESTADO_TIEMPO";
 
     private int tiempo;
+    private int estado;
     private boolean isDebug;
 
     public CounterService() {
@@ -34,6 +37,27 @@ public class CounterService extends IntentService {
                 tiempo = intent.getIntExtra(TAG_TIEMPO, 0);
                 isDebug = intent.getBooleanExtra(TAG_DEBUG, false);
                 ejecutarServicio();
+
+                //Construcción de notificación
+                estado = intent.getIntExtra(TAG_ESTADO_TIEMPO,0);
+                NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
+                builder.setSmallIcon(android.R.drawable.stat_notify_error);
+                switch (estado){
+                    case 0:
+                        builder.setContentTitle(getResources().getString(R.string.tomate_finalizado));
+                        builder.setContentText(getResources().getString(R.string.tomate_descanso));
+                        break;
+                    case 1:
+                        builder.setContentTitle(getResources().getString(R.string.short_finalizado));
+                        builder.setContentText(getResources().getString(R.string.continuar_tomate));
+                        break;
+                    case 2:
+                        builder.setContentTitle(getResources().getString(R.string.long_finalizado));
+                        builder.setContentText(getResources().getString(R.string.continuar_tomate));
+                        break;
+                }
+                NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+                notificationManager.notify(1, builder.build());
             }
         }
     }

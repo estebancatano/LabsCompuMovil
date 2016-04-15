@@ -8,7 +8,6 @@ import android.content.SharedPreferences;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.ContextThemeWrapper;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,10 +15,11 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    private final String TAG_NUM_TOMATE = "Tomate";
-    private final String TAG_ESTADO = "Estado";
+    private final String TAG_NUM_TOMATE = "TAG_TOMATE";
+    private final String TAG_ESTADO = "TAG_ESTADO";
 
 
+    private TextView lblActividad;
     private TextView lblContador;
     private Button btnIniciar;
     private Button btnReiniciar;
@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         setTitle(R.string.pomodoro);
 
+        lblActividad = (TextView) findViewById(R.id.lbl_actividad);
         lblContador = (TextView) findViewById(R.id.lbl_contador);
         btnIniciar = (Button) findViewById(R.id.btn_iniciar);
         btnReiniciar = (Button) findViewById(R.id.btn_reiniciar);
@@ -47,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnIniciar.setOnClickListener(this);
         btnReiniciar.setOnClickListener(this);
 
-        tiempoTomate = 25;
+        tiempoTomate = 8;
         if (savedInstanceState != null){
             numeroTomates = savedInstanceState.getInt(TAG_NUM_TOMATE);
             estado = savedInstanceState.getInt(TAG_ESTADO);
@@ -58,6 +59,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             tiempo = tiempoTomate;
         }
         formatearTextoTiempo();
+
         lblContador.setText(texto);
         IntentFilter filter = new IntentFilter(CounterService.ACTION_SERVICE_RUN);
         filter.addAction(CounterService.ACTION_SERVICE_EXIT);
@@ -112,22 +114,66 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent intent = new Intent(this,CounterService.class);
         switch (v.getId()){
             case R.id.btn_iniciar:
-                intent = new Intent(this,CounterService.class);
                 intent.setAction(CounterService.ACTION_SERVICE_RUN);
                 intent.putExtra(CounterService.TAG_DEBUG, isDebug);
                 intent.putExtra(CounterService.TAG_TIEMPO,tiempo);
+                intent.putExtra(CounterService.TAG_ESTADO_TIEMPO,estado);
                 startService(intent);
                 break;
 
             case R.id.btn_reiniciar:
                 numeroTomates = 0;
                 estado = 0;
-                tiempo = 25;
+                tiempo = 8;
                 formatearTextoTiempo();
                 lblContador.setText(texto.toString());
                 stopService(intent);
                 break;
         }
+    }
+
+    private void formatearTextoTiempo(){
+        texto = new StringBuilder();
+        if (tiempo < 10){
+            texto.append("0");
+        }
+        texto.append(tiempo);
+        texto.append(":00");
+    }
+
+    private void procesarEstado(){
+        switch (estado){
+            case 0:
+                numeroTomates = numeroTomates + 1;
+                if (numeroTomates == 4){
+                    estado = 2;
+                    tiempo = longBreak;
+                    lblActividad.setText(getResources().getString(R.string.long_break));
+                }else{
+                    estado = 1;
+                    tiempo = shortBreak;
+                    lblActividad.setText(getResources().getString(R.string.short_break));
+                }
+                break;
+            case 1:
+                estado = 0;
+                tiempo = tiempoTomate;
+                lblActividad.setText(getResources().getString(R.string.tomate));
+                break;
+            case 2:
+                estado = 0;
+                tiempo = tiempoTomate;
+                numeroTomates = 0;
+                lblActividad.setText(getResources().getString(R.string.tomate));
+                break;
+        }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putInt(TAG_NUM_TOMATE,numeroTomates);
+        outState.putInt(TAG_ESTADO, estado);
+        super.onSaveInstanceState(outState);
     }
 
 
@@ -150,45 +196,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     break;
             }
         }
-    }
-
-    private void formatearTextoTiempo(){
-        texto = new StringBuilder();
-        if (tiempo < 10){
-            texto.append("0");
-        }
-        texto.append(tiempo);
-        texto.append(":00");
-    }
-
-    private void procesarEstado(){
-        switch (estado){
-            case 0:
-                numeroTomates = numeroTomates + 1;
-                if (numeroTomates == 4){
-                    estado = 2;
-                    tiempo = longBreak;
-                }else{
-                    estado = 1;
-                    tiempo = shortBreak;
-                }
-                break;
-            case 1:
-                estado = 0;
-                tiempo = tiempoTomate;
-                break;
-            case 2:
-                estado = 0;
-                tiempo = tiempoTomate;
-                numeroTomates = 0;
-                break;
-        }
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        outState.putInt(TAG_NUM_TOMATE,numeroTomates);
-        outState.putInt(TAG_ESTADO, estado);
-        super.onSaveInstanceState(outState);
     }
 }
