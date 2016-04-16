@@ -59,16 +59,20 @@ public class ConfiguracionActivity extends AppCompatActivity implements SeekBar.
         //Seleccionar valueVolumen
         volumenSeekBar = (SeekBar) findViewById(R.id.seekBar);
         volumenSeekBar.setProgress(valueVolumen);
-/*
+
         audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
 
+        // Ejecutar sonido si el dispositivo tiene activo el sonido
+        if (audioManager.getRingerMode() == AudioManager.RINGER_MODE_NORMAL){
+                int streamMaxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_NOTIFICATION);
+                volumenSeekBar.setMax(streamMaxVolume);
 
-        int streamMaxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);b
-        volumenSeekBar.setMax(streamMaxVolume);
+                int streamVolume = audioManager.getStreamVolume(AudioManager.STREAM_NOTIFICATION);
+                volumenSeekBar.setProgress(streamVolume);
+        }
 
-        int streamVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
-        volumenSeekBar.setProgress(streamVolume);
-*/
+        //Listener
+        volumenSeekBar.setOnSeekBarChangeListener(this);
 
         //Seleccionar vibración
         if (valueVibracion != -1){
@@ -89,10 +93,6 @@ public class ConfiguracionActivity extends AppCompatActivity implements SeekBar.
         }
 
         cbDebug.setChecked(valueDebug);
-
-        //Listener
-        volumenSeekBar.setOnSeekBarChangeListener(this);
-
     }
 
     @Override
@@ -135,6 +135,7 @@ public class ConfiguracionActivity extends AppCompatActivity implements SeekBar.
 
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+        audioManager.setStreamVolume(audioManager.STREAM_MUSIC, progress, AudioManager.FLAG_PLAY_SOUND);
         SharedPreferences preferencias = getSharedPreferences(TAG_PREFERENCIAS, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferencias.edit();
         editor.putInt(TAG_VOLUMEN,progress);
