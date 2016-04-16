@@ -27,7 +27,7 @@ public class ConfiguracionActivity extends AppCompatActivity implements SeekBar.
     public static final String TAG_LONG_BREAK = "long_break";
     public static final int TAG_LONG_BREAK_DEFECTO = 0;
     public static final String TAG_DEBUG = "debug";
-    public static final boolean TAG_DEBUG_DEFECTO = true;
+    public static final boolean TAG_DEBUG_DEFECTO = false;
 
     private SeekBar volumenSeekBar;
     private AudioManager audioManager;
