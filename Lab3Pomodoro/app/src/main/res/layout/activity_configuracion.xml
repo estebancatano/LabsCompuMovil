@@ -4,183 +4,190 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/margin"
     android:orientation="vertical"
     tools:context="co.edu.udea.compumovil.gr05.lab3pomodoro.ConfiguracionActivity">
 
-    <ScrollView
+    <android.support.v7.widget.Toolbar
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/appbar"
+        android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:minHeight="?attr/actionBarSize"
+        android:background="@color/primary"
+        android:elevation="@dimen/elevation4"/>
 
-        <LinearLayout
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="@dimen/margin">
+
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
-            <!-- VOLUMEN -->
-
-            <TextView
-                android:id="@+id/lbl_volumen"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/volumen"
-                android:textStyle="bold"
-                android:textSize="@dimen/text_size_subtitle"/>
-
-            <SeekBar
-                android:id="@+id/seekBar"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/height_seekbar"
-                android:layout_marginTop="@dimen/margin"/>
-
-            <!-- VIBRACIÓN -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/vibracion"
-                android:textStyle="bold"
-                android:textSize="@dimen/text_size_subtitle"
-                android:layout_marginTop="@dimen/margin"/>
-
-            <RadioGroup
-                android:id="@+id/rg_vibracion"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin"
-                android:gravity="center"
                 android:orientation="vertical">
 
-                <RadioButton
-                    android:id="@+id/rb_apagado"
+                <!-- VOLUMEN -->
+
+                <TextView
+                    android:id="@+id/lbl_volumen"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="left"
-                    android:text="@string/apagado"
-                    android:textSize="@dimen/standar_size"/>
+                    android:text="@string/volumen"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/text_size_subtitle"/>
 
-                <RadioButton
-                    android:id="@+id/rb_corto"
+                <SeekBar
+                    android:id="@+id/seekBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_seekbar"
+                    android:layout_marginTop="@dimen/margin"/>
+
+                <!-- VIBRACIÓN -->
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="left"
-                    android:text="@string/corto"
-                    android:textSize="@dimen/standar_size"/>
+                    android:text="@string/vibracion"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/text_size_subtitle"
+                    android:layout_marginTop="@dimen/margin"/>
 
-                <RadioButton
-                    android:id="@+id/rb_largo"
+                <RadioGroup
+                    android:id="@+id/rg_vibracion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <RadioButton
+                        android:id="@+id/rb_apagado"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:text="@string/apagado"
+                        android:textSize="@dimen/standar_size"/>
+
+                    <RadioButton
+                        android:id="@+id/rb_corto"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:text="@string/corto"
+                        android:textSize="@dimen/standar_size"/>
+
+                    <RadioButton
+                        android:id="@+id/rb_largo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:text="@string/largo"
+                        android:textSize="@dimen/standar_size"/>
+                </RadioGroup>
+
+                <!-- SHORT BREAK -->
+
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="left"
-                    android:text="@string/largo"
-                    android:textSize="@dimen/standar_size"/>
-            </RadioGroup>
+                    android:text="@string/short_break"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/text_size_subtitle"
+                    android:layout_marginTop="@dimen/margin"/>
 
-            <!-- SHORT BREAK -->
+                <RadioGroup
+                    android:id="@+id/rg_short_break"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/short_break"
-                android:textStyle="bold"
-                android:textSize="@dimen/text_size_subtitle"
-                android:layout_marginTop="@dimen/margin"/>
+                    <RadioButton
+                        android:id="@+id/rb_tres_min"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:text="@string/tres_min"
+                        android:textSize="@dimen/standar_size"/>
+                    <RadioButton
+                        android:id="@+id/rb_cuatro_min"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:text="@string/cuatro_min"
+                        android:textSize="@dimen/standar_size"/>
+                    <RadioButton
+                        android:id="@+id/rb_cinco_min"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:text="@string/cinco_min"
+                        android:textSize="@dimen/standar_size"/>
+                    <RadioButton
+                        android:id="@+id/rb_seis_min"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:text="@string/seis_min"
+                        android:textSize="@dimen/standar_size"/>
+                </RadioGroup>
 
-            <RadioGroup
-                android:id="@+id/rg_short_break"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <RadioButton
-                    android:id="@+id/rb_tres_min"
+                <!-- LONG BREAK-->
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="left"
-                    android:text="@string/tres_min"
-                    android:textSize="@dimen/standar_size"/>
-                <RadioButton
-                    android:id="@+id/rb_cuatro_min"
+                    android:text="@string/long_break"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/text_size_subtitle"
+                    android:layout_marginTop="@dimen/margin"/>
+
+                <RadioGroup
+                    android:id="@+id/rg_long_break"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <RadioButton
+                        android:id="@+id/rb_diez_min"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:text="@string/diez_min"
+                        android:textSize="@dimen/standar_size"/>
+
+                    <RadioButton
+                        android:id="@+id/rb_quince_min"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:text="@string/quince_min"
+                        android:textSize="@dimen/standar_size"/>
+
+                    <RadioButton
+                        android:id="@+id/rb_veinte_min"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:text="@string/veinte_min"
+                        android:textSize="@dimen/standar_size"/>
+                </RadioGroup>
+                <!-- MODO DEBUG-->
+                <CheckBox
+                    android:id="@+id/cb_debug"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="left"
-                    android:text="@string/cuatro_min"
-                    android:textSize="@dimen/standar_size"/>
-                <RadioButton
-                    android:id="@+id/rb_cinco_min"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="left"
-                    android:text="@string/cinco_min"
-                    android:textSize="@dimen/standar_size"/>
-                <RadioButton
-                    android:id="@+id/rb_seis_min"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="left"
-                    android:text="@string/seis_min"
-                    android:textSize="@dimen/standar_size"/>
-            </RadioGroup>
-
-            <!-- LONG BREAK-->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/long_break"
-                android:textStyle="bold"
-                android:textSize="@dimen/text_size_subtitle"
-                android:layout_marginTop="@dimen/margin"/>
-
-            <RadioGroup
-                android:id="@+id/rg_long_break"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <RadioButton
-                    android:id="@+id/rb_diez_min"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="left"
-                    android:text="@string/diez_min"
-                    android:textSize="@dimen/standar_size"/>
-
-                <RadioButton
-                    android:id="@+id/rb_quince_min"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="left"
-                    android:text="@string/quince_min"
-                    android:textSize="@dimen/standar_size"/>
-
-                <RadioButton
-                    android:id="@+id/rb_veinte_min"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="left"
-                    android:text="@string/veinte_min"
-                    android:textSize="@dimen/standar_size"/>
-            </RadioGroup>
-            <!-- MODO DEBUG-->
-            <CheckBox
-                android:id="@+id/cb_debug"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/debug_mode"
-                android:textSize="@dimen/standar_size"
-                android:layout_gravity="center"
-                android:layout_marginTop="@dimen/margin"/>
-
-
-        </LinearLayout>
-
-
-
-    </ScrollView>
-
-
-
+                    android:text="@string/debug_mode"
+                    android:textSize="@dimen/standar_size"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/margin"/>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
 </LinearLayout>

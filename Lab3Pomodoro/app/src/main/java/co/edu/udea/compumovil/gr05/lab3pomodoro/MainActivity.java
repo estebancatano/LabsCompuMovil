@@ -13,8 +13,10 @@ import android.net.Uri;
 import android.os.Vibrator;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.LocalBroadcastManager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -47,6 +49,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         setTitle(R.string.pomodoro);
+
+        setToolbar();
 
         lblActividad = (TextView) findViewById(R.id.lbl_actividad);
         lblContador = (TextView) findViewById(R.id.lbl_contador);
@@ -231,6 +235,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onSaveInstanceState(outState);
     }
 
+    private void setToolbar() {
+        //Crea el widget Toolbar
+        Toolbar toolbar = (Toolbar) findViewById(R.id.appbar);
+        //Referencia la ActionBar como Toolbar
+        setSupportActionBar(toolbar);
+        final ActionBar ab = getSupportActionBar();
+        if (ab != null) {
+            //Atributos de la Toolbar
+            ab.setTitle(R.string.pomodoro);
+            ab.setIcon(R.mipmap.logo_grupo5);
+        }
+    }
 
 
     // Broadcast que recibe la señal con el tiempo

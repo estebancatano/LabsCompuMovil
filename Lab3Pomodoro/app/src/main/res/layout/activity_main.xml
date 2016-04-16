@@ -4,9 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/margin"
     android:orientation="vertical"
     tools:context="co.edu.udea.compumovil.gr05.lab3pomodoro.MainActivity">
+
+    <android.support.v7.widget.Toolbar
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/appbar"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:minHeight="?attr/actionBarSize"
+        android:background="@color/primary"
+        android:elevation="@dimen/elevation4"/>
 
     <TextView
         android:id="@+id/lbl_actividad"
@@ -34,7 +42,8 @@
         android:layout_weight="1"
         android:background="@color/green_button"
         android:textSize="@dimen/text_size_button"
-        android:text="@string/iniciar"/>
+        android:text="@string/iniciar"
+        android:layout_margin="@dimen/margin"/>
 
     <Button
         android:id="@+id/btn_reiniciar"
@@ -44,6 +53,7 @@
         android:layout_weight="1"
         android:background="@color/red_button"
         android:textSize="@dimen/text_size_button"
-        android:text="@string/reiniciar"/>
+        android:text="@string/reiniciar"
+        android:layout_margin="@dimen/margin"/>
 
 </LinearLayout>

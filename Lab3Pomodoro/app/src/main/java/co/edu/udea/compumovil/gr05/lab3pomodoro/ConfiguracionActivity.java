@@ -3,8 +3,10 @@ package co.edu.udea.compumovil.gr05.lab3pomodoro;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.media.AudioManager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.CheckBox;
 import android.widget.RadioButton;
@@ -25,7 +27,7 @@ public class ConfiguracionActivity extends AppCompatActivity implements SeekBar.
     public static final String TAG_LONG_BREAK = "long_break";
     public static final int TAG_LONG_BREAK_DEFECTO = 0;
     public static final String TAG_DEBUG = "debug";
-    public static final boolean TAG_DEBUG_DEFECTO = false;
+    public static final boolean TAG_DEBUG_DEFECTO = true;
 
     private SeekBar volumenSeekBar;
     private AudioManager audioManager;
@@ -42,6 +44,8 @@ public class ConfiguracionActivity extends AppCompatActivity implements SeekBar.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_configuracion);
         setTitle(R.string.configuracion);
+
+        setToolbar();
 
         rgVibracion = (RadioGroup) findViewById(R.id.rg_vibracion);
         rgShortBreak = (RadioGroup) findViewById(R.id.rg_short_break);
@@ -131,6 +135,19 @@ public class ConfiguracionActivity extends AppCompatActivity implements SeekBar.
         editor.commit();
 
 
+    }
+
+    private void setToolbar() {
+        //Crea el widget Toolbar
+        Toolbar toolbar = (Toolbar) findViewById(R.id.appbar);
+        //Referencia la ActionBar como Toolbar
+        setSupportActionBar(toolbar);
+        final ActionBar ab = getSupportActionBar();
+        if (ab != null) {
+            //Atributos de la Toolbar
+            ab.setTitle(R.string.configuracion);
+            ab.setIcon(R.mipmap.logo_grupo5);
+        }
     }
 
     @Override
