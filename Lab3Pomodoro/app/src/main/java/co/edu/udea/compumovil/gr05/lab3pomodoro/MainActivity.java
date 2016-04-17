@@ -144,7 +144,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 tiempo = tiempoTomate;
                 formatearTextoTiempo();
                 lblContador.setText(texto.toString());
-                lblActividad.setText(getResources().getString(R.string.tomate));
+                lblActividad.setText(getResources().getString(R.string.pomodoro));
                 btnIniciar.setEnabled(true);
                 btnIniciar.setBackgroundColor(getResources().getColor(R.color.green_button));
                 break;
@@ -160,16 +160,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         switch (estado){
             case 0:
-                builder.setContentTitle(getResources().getString(R.string.tomate_finalizado));
-                builder.setContentText(getResources().getString(R.string.tomate_descanso));
+                builder.setContentTitle(getResources().getString(R.string.pomodoro_finalizado));
+                builder.setContentText(getResources().getString(R.string.pomodoro_descanso));
                 break;
             case 1:
                 builder.setContentTitle(getResources().getString(R.string.short_finalizado));
-                builder.setContentText(getResources().getString(R.string.continuar_tomate));
+                builder.setContentText(getResources().getString(R.string.continuar_pomodoro));
                 break;
             case 2:
                 builder.setContentTitle(getResources().getString(R.string.long_finalizado));
-                builder.setContentText(getResources().getString(R.string.continuar_tomate));
+                builder.setContentText(getResources().getString(R.string.continuar_pomodoro));
                 break;
         }
         AudioManager audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
@@ -217,13 +217,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case 1:
                 estado = 0;
                 tiempo = tiempoTomate;
-                lblActividad.setText(getResources().getString(R.string.tomate));
+                lblActividad.setText(getResources().getString(R.string.pomodoro));
                 break;
             case 2:
                 estado = 0;
                 tiempo = tiempoTomate;
                 numeroTomates = 0;
-                lblActividad.setText(getResources().getString(R.string.tomate));
+                lblActividad.setText(getResources().getString(R.string.pomodoro));
                 break;
         }
     }

@@ -5,6 +5,7 @@
     <dimen name="height_button">70dp</dimen>
     <dimen name="height_seekbar">30dp</dimen>
     <dimen name="elevation4">4dp</dimen>
+    <dimen name="top_counter">30dp</dimen>
 
     <!-- Text Size-->
     <dimen name="text_size_timer">120sp</dimen>

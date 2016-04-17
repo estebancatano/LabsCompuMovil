@@ -23,14 +23,14 @@
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/margin"
         android:textSize="@dimen/standar_size"
-        android:text="@string/tomate"/>
+        android:text="@string/pomodoro"/>
 
     <TextView
         android:id="@+id/lbl_contador"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="2"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="@dimen/top_counter"
         android:layout_gravity="center"
         android:textSize="@dimen/text_size_timer"
         android:text="@string/time_text"/>

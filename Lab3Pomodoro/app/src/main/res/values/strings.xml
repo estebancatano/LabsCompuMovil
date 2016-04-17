@@ -8,12 +8,11 @@
     <string name="iniciar">INICIAR</string>
     <string name="reiniciar">REINICIAR</string>
     <string name="actividad">Actividad</string>
-    <string name="tomate">Tomate</string>
-    <string name="tomate_finalizado">Tomate finalizado</string>
-    <string name="tomate_descanso">Ya puedes tomar un descanso</string>
+    <string name="pomodoro_finalizado">Pomodoro finalizado</string>
+    <string name="pomodoro_descanso">Ya puedes tomar un descanso</string>
     <string name="short_finalizado">Short break finalizado</string>
     <string name="long_finalizado">Long break finalizado</string>
-    <string name="continuar_tomate">Es momento de continuar</string>
+    <string name="continuar_pomodoro">Es momento de continuar</string>
 
     <!-- ConfiguracionActivity -->
     <string name="volumen">Volumen</string>

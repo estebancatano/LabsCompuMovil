@@ -146,7 +146,7 @@ public class ConfiguracionActivity extends AppCompatActivity implements SeekBar.
         if (ab != null) {
             //Atributos de la Toolbar
             ab.setTitle(R.string.configuracion);
-            ab.setIcon(R.mipmap.logo_grupo5);
+            ab.setDisplayHomeAsUpEnabled(true);
         }
     }
 
