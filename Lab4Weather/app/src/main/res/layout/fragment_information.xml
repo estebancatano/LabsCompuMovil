@@ -1,0 +1,116 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary_light"
+    android:layout_margin="@dimen/margin"
+    android:minWidth="1000dp"
+    android:minHeight="450dp"
+    android:orientation="vertical"
+    tools:context="co.edu.udea.compumovil.gr05.lab4weather.FragmentInformation">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <!-- TEMPERATURA -->
+            <TextView
+                android:id="@+id/title_temperatura"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size"
+                android:gravity="center"
+                android:text="@string/temperatura"
+                android:textColor="@color/black"
+                android:background="@color/primary"/>
+
+            <TextView
+                android:id="@+id/lbl_temperatura"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/margin"
+                android:text="@string/no_info"
+                android:textColor="@color/black"/>
+
+            <!-- HUMEDAD -->
+
+            <TextView
+                android:id="@+id/title_humedad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/margin"
+                android:text="@string/humedad"
+                android:textColor="@color/black"
+                android:background="@color/primary"/>
+
+            <TextView
+                android:id="@+id/lbl_humedad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/margin"
+                android:text="@string/no_info"
+                android:textColor="@color/black"/>
+
+            <!-- DESCRIPCION -->
+
+            <TextView
+                android:id="@+id/title_descripcion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/margin"
+                android:text="@string/descripcion"
+                android:textColor="@color/black"
+                android:background="@color/primary"/>
+
+            <TextView
+                android:id="@+id/lbl_descripcion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/margin"
+                android:text="@string/no_info"
+                android:textColor="@color/black"/>
+
+            <!-- IMAGEN -->
+
+            <TextView
+                android:id="@+id/title_imagen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/margin"
+                android:text="@string/imagen"
+                android:textColor="@color/black"
+                android:background="@color/primary"/>
+
+            <ImageView
+                android:background="@color/gray_button"
+                android:id="@+id/imagen_clima"
+                android:layout_width="@dimen/image_size"
+                android:layout_height="@dimen/image_size"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/margin"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+</LinearLayout>

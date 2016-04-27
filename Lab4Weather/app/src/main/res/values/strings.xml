@@ -1,3 +1,14 @@
 <resources>
-    <string name="app_name">Lab4Weather</string>
+    <string name="app_name">Lab4 - Weather</string>
+    <string name="ciudad">Ciudad</string>
+    <string name="buscar">BUSCAR</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="estado_clima">ESTADO DEL CLIMA</string>
+    <string name="temperatura">Temperatura</string>
+    <string name="humedad">Humedad</string>
+    <string name="descripcion">Descripción</string>
+    <string name="imagen">Imagen</string>
+    <string name="no_info">Sin información</string>
 </resources>
