@@ -6,9 +6,98 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="estado_clima">ESTADO DEL CLIMA</string>
-    <string name="temperatura">Temperatura</string>
+    <string name="temperatura_min">Temperatura mínima</string>
+    <string name="temperatura_max">Temperatura máxima</string>
     <string name="humedad">Humedad</string>
     <string name="descripcion">Descripción</string>
     <string name="imagen">Imagen</string>
     <string name="no_info">Sin información</string>
+    <string name="no_image">No fue posible cargar la imagen</string>
+    <string name="error_clima">No fue posible cargar la información</string>
+
+    <string-array name="lista_paises">
+        <item>Andorra la Vella, Andorra</item>
+        <item>Abu Dhabi, Emiratos Árabes Unidos</item>
+        <item>Kabul, Afganistán</item>
+        <item>Saint Johns, Antigua y Barbuda</item>
+        <item>The Valley, Anguila</item>
+        <item>Tirana, Albania</item>
+        <item>Yerevan, Armenia</item>
+        <item>Luanda, Angola</item>
+        <item>Buenos Aires, Argentina</item>
+        <item>Pago Pago, Samoa Americana</item>
+        <item>Vienna, Austria</item>
+        <item>Canberra, Australia</item>
+        <item>Oranjestad, Aruba</item>
+        <item>Sarajevo, Bosnia y Hercegovina</item>
+        <item>Bridgetown, Australia</item>
+        <item>Dhaka, Bangladesh</item>
+        <item>Brussels, Bélgica</item>
+        <item>Ouagadougou, Burkina Faso</item>
+        <item>Sofia, Bulgaria</item>
+        <item>Manama, Bahráin</item>
+        <item>Bujumbura, Burundi</item>
+        <item>Porto-Novo, Benín</item>
+        <item>Hamilton, Bermudas</item>
+        <item>Bandar Seri Begawan, Brunéi</item>
+        <item>La Paz, Bolivia</item>
+        <item>Brasilia, Brasil</item>
+        <item>Nassau, Bahamas</item>
+        <item>Thimphu, Bután</item>
+        <item>Gaborone, Botsuana</item>
+        <item>Minsk, Bielorrusia</item>
+        <item>Belmopan, Belice</item>
+        <item>Ottawa, Canadá</item>
+        <item>West Island, Islas Cocos</item>
+        <item>Kinshasa, República Democrática del Cong</item>
+        <item>Bangui, República Centroafricana</item>
+        <item>Brazzaville, Congo</item>
+        <item>Bern, Suiza</item>
+        <item>Abidjan, Costa de Marfil</item>
+        <item>Avarua, Islas Cook</item>
+        <item>Santiago, Chile</item>
+        <item>Yaounde, Camerún</item>
+        <item>Beijing, China</item>
+        <item>Bogota, Colombia</item>
+        <item>Medellin, Colombia</item>
+        <item>Cali, Colombia</item>
+        <item>Barranquilla, Colombia</item>
+        <item>Cartagena, Colombia</item>
+        <item>Cucuta, Colombia</item>
+        <item>Ibague, Colombia</item>
+        <item>Bucaramanga, Colombia</item>
+        <item>Santa Marta, Colombia</item>
+        <item>Villavicencio, Colombia</item>
+        <item>Pereira, Colombia</item>
+        <item>Valledupar, Colombia</item>
+        <item>Pasto, Colombia</item>
+        <item>Manizales, Colombia</item>
+        <item>Monteria, Colombia</item>
+        <item>Neiva, Colombia</item>
+        <item>San Jose, Costa Rica</item>
+        <item>Havana, Cuba</item>
+        <item>Praia, Cabo Verde</item>
+        <item>Flying Fish Cove, Isla Christmas</item>
+        <item>Nicosia, Chipre</item>
+        <item>Prague, Chequia</item>
+        <item>Berlin, Alemania</item>
+        <item>Djibouti, Yibuti</item>
+        <item>Copenhagen, Dinamarca</item>
+        <item>Roseau, Dominica</item>
+        <item>Santo Domingo, República Dominicana</item>
+        <item>Algiers, Argelia</item>
+        <item>Quito, Ecuador</item>
+        <item>Tallinn, Estonia</item>
+        <item>Cairo, Egipto</item>
+        <item>Laayoune / El Aaiun, Sahara Occidental</item>
+        <item>Asmera, Eritrea</item>
+        <item>Madrid, España</item>
+        <item>Addis Ababa, Etiopía</item>
+        <item>Helsinki, Finlandia</item>
+        <item>Suva, Fiyi</item>
+        <item>Stanley, Islas Malvinas</item>
+        <item>Palikir - National Government Center, Micronesia</item>
+        <item>Torshavn, Islas Feroe</item>
+        <item>Paris, Francia</item>
+    </string-array>
 </resources>
