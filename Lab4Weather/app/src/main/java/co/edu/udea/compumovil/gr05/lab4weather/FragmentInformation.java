@@ -12,18 +12,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.android.volley.Response;
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-
-import org.json.JSONObject;
 
 
 /**
@@ -33,8 +26,7 @@ public class FragmentInformation extends DialogFragment{
 
     private static final String URL_IMAGEN = "http://openweathermap.org/img/w/";
     private TextView lblCiudad;
-    private TextView lblTemperaturaMin;
-    private TextView lblTemperaturaMax;
+    private TextView lblTemperatura;
     private TextView lblHumedad;
     private TextView lblDescripcion;
     private ImageView imagenClima;
@@ -55,8 +47,7 @@ public class FragmentInformation extends DialogFragment{
         getDialog().setTitle(getResources().getString(R.string.estado_clima));
 
         lblCiudad = (TextView) view.findViewById(R.id.lbl_ciudad);
-        lblTemperaturaMin = (TextView) view.findViewById(R.id.lbl_temperatura_min);
-        lblTemperaturaMax = (TextView) view.findViewById(R.id.lbl_temperatura_max);
+        lblTemperatura = (TextView) view.findViewById(R.id.lbl_temperatura);
         lblHumedad = (TextView) view.findViewById(R.id.lbl_humedad);
         lblDescripcion = (TextView) view.findViewById(R.id.lbl_descripcion);
         imagenClima = (ImageView) view.findViewById(R.id.imagen_clima);
@@ -64,9 +55,8 @@ public class FragmentInformation extends DialogFragment{
         Bundle parametros = getArguments();
 
         lblCiudad.setText(parametros.getString(MainActivity.TAG_CIUDAD));
-        lblTemperaturaMin.setText(parametros.getString(MainActivity.TAG_TEMP_MIN));
-        lblTemperaturaMax.setText(parametros.getString(MainActivity.TAG_TEMP_MAX));
-        lblHumedad.setText(parametros.getString(MainActivity.TAG_HUMEDAD));
+        lblTemperatura.setText(parametros.getString(MainActivity.TAG_TEMP)+"°C");
+        lblHumedad.setText(parametros.getString(MainActivity.TAG_HUMEDAD)+"%");
         lblDescripcion.setText(parametros.getString(MainActivity.TAG_DESCRIPCION));
 
         obtenerImagen(parametros.getString(MainActivity.TAG_IMAGEN));
@@ -76,6 +66,7 @@ public class FragmentInformation extends DialogFragment{
     private void obtenerImagen(String icon) {
         requestQueue = Volley.newRequestQueue(getContext());
         String urlImagen = URL_IMAGEN + icon + ".png";
+
         ImageRequest imageRequest = new ImageRequest(urlImagen, new Response.Listener<Bitmap>() {
             @Override
             public void onResponse(Bitmap response) {
@@ -90,4 +81,6 @@ public class FragmentInformation extends DialogFragment{
 
         requestQueue.add(imageRequest);
     }
+
+
 }

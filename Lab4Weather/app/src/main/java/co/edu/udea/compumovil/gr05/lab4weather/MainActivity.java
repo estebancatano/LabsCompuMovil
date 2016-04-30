@@ -1,23 +1,23 @@
 package co.edu.udea.compumovil.gr05.lab4weather;
 
-import android.graphics.Bitmap;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
@@ -26,10 +26,11 @@ import com.google.gson.JsonParser;
 
 import org.json.JSONObject;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+import co.edu.udea.compumovil.gr05.lab4weather.Modelo.DatosClima;
 
-    public static final String TAG_TEMP_MIN = "TAG_TEMP_MIN";
-    public static final String TAG_TEMP_MAX = "TAG_TEMP_MAX";
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, TextView.OnEditorActionListener {
+
+    public static final String TAG_TEMP = "TAG_TEMP";
     public static final String TAG_HUMEDAD = "TAG_HUMEDAD";
     public static final String TAG_DESCRIPCION = "TAG_DESCRIPCION";
     public static final String TAG_IMAGEN = "TAG_IMAGEN";
@@ -63,8 +64,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ArrayAdapter<String> adaptadorPaises = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, paises);
         txtCiudad.setAdapter(adaptadorPaises);
 
-        //adaptadorPaises.setDropDownViewResource(R.layout.menu_spinner);
-
+        txtCiudad.setOnEditorActionListener(this);
         btnBuscar.setOnClickListener(this);
     }
 
@@ -83,15 +83,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-
-        String ciudad;
-        ciudad=txtCiudad.getText().toString();
-
-        peticion = URL + quitarEspacios(ciudad) + API_KEY + PARAMS;
-
-        sendRequest();
-
-
+        buscarClima();
     }
 
     private String quitarEspacios(String cadena){
@@ -121,9 +113,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         if (datosClima != null){
                             if (!datosClima.getCod().equals("404")){
                                 Bundle bundle = new Bundle();
-                                bundle.putString(TAG_CIUDAD, datosClima.getName().toUpperCase());
-                                bundle.putString(TAG_TEMP_MIN, datosClima.getMain().getTemp_min());
-                                bundle.putString(TAG_TEMP_MAX, datosClima.getMain().getTemp_max());
+                                bundle.putString(TAG_CIUDAD, datosClima.getName()+","
+                                        +datosClima.getSystem().getCountry().toUpperCase());
+                                bundle.putString(TAG_TEMP, datosClima.getMain().getTemp());
                                 bundle.putString(TAG_HUMEDAD, datosClima.getMain().getHumidity());
                                 bundle.putString(TAG_DESCRIPCION, datosClima.getWeather()[0].getDescription());
                                 bundle.putString(TAG_IMAGEN, datosClima.getWeather()[0].getIcon());
@@ -150,6 +142,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         requestQueue.add(objectRequest);
     }
 
+    private void buscarClima(){
+        String ciudad;
+        ciudad=txtCiudad.getText().toString();
 
+        peticion = URL + quitarEspacios(ciudad) + API_KEY + PARAMS;
 
+        sendRequest();
+        txtCiudad.setText(null);
+    }
+
+    @Override
+    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+        if (actionId == EditorInfo.IME_ACTION_SEARCH){
+            buscarClima();
+        }
+        return false;
+    }
 }

@@ -1,4 +1,4 @@
-package co.edu.udea.compumovil.gr05.lab4weather;
+package co.edu.udea.compumovil.gr05.lab4weather.Modelo;
 
 /**
  * Created by joluditru on 28/04/2016.
@@ -6,6 +6,7 @@ package co.edu.udea.compumovil.gr05.lab4weather;
 public class DatosClima {
     private Clima[] weather;
     private Principal main;
+    private Sistema sys;
     private String name;
     private String cod;
 
@@ -42,5 +43,13 @@ public class DatosClima {
 
     public void setCod(String cod) {
         this.cod = cod;
+    }
+
+    public Sistema getSystem() {
+        return sys;
+    }
+
+    public void setSystem(Sistema sys) {
+        this.sys = sys;
     }
 }
