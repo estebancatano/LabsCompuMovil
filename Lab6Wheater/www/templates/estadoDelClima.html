@@ -1,11 +1,11 @@
-<ion-view style="" class=" " id="page1" title="Estado del Clima">
-    <ion-content class="has-header" padding="true">
+<ion-view style="" class=" " id="page1" title="Estado del Clima" >
+    <ion-content class="has-header" padding="true" ng-controller="estadoDelClimaCtrl">
         <form class="list " id="estadoDelClima-form8">
             <label name="txtCiudad" id="estadoDelClima-input3" class="item item-input ">
                 <span class="input-label">Ciudad</span>
-                <input placeholder="" type="text">
+                <input placeholder="" type="text" ng-model="ciudad">
             </label>
-            <button class=" button button-positive  button-block " id="estadoDelClima-button2">Buscar</button>
+            <button class=" button button-positive  button-block " id="estadoDelClima-button2" ng-click="mostrarClima()">Buscar</button>
             <div class="">
                 <a href="mailto:" style="display:block;">
                     <img style="display: block; margin-left: auto; margin-right: auto;" src="img/4U0otoOHSVFiEF8cPNUF_11d.png" width="64" height="64">
@@ -13,10 +13,10 @@
             </div>
         </form>
         <h3 class=" " style="color: rgb(0, 0, 0); font-weight: lighter; text-align: center;" id="estadoDelClima-heading2">Temperatura</h3>
-        <h3 class=" " style="color: rgb(0, 0, 0); font-weight: lighter; text-align: center;" id="estadoDelClima-heading3">22 °C</h3>
+        <h3 class=" " style="color: rgb(0, 0, 0); font-weight: lighter; text-align: center;" id="headerTemperatura">22 °C</h3>
         <h3 class=" " style="color: rgb(0, 0, 0); font-weight: lighter; text-align: center;" id="estadoDelClima-heading4">Humedad</h3>
-        <h3 class=" " style="color: rgb(0, 0, 0); font-weight: lighter; text-align: center;" id="estadoDelClima-heading5">64%</h3>
+        <h3 class=" " style="color: rgb(0, 0, 0); font-weight: lighter; text-align: center;" id="headerHumedad">64%</h3>
         <h3 class=" " style="color: rgb(0, 0, 0); font-weight: lighter; text-align: center;" id="estadoDelClima-heading6">Descripción</h3>
-        <h3 class=" " style="color: rgb(0, 0, 0); font-weight: lighter; text-align: center;" id="estadoDelClima-heading7">Tormenta</h3>
+        <h3 class=" " style="color: rgb(0, 0, 0); font-weight: lighter; text-align: center;" id="headerDescripcion">Tormenta</h3>
     </ion-content>
 </ion-view>
